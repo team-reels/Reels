@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from domains.repositories.catch_repository import CatchRepository 
+from domains.repositories.catch_repository import CatchRepository
 from engine import engine
 from sqlalchemy.orm import Session
 
@@ -41,7 +41,8 @@ def add_user():
 
     with Session(engine) as session:
         catch_repository = CatchRepository(session)
-        new_catch = catch_repository.add_user(user_id=user_id, species=species, weight=weight, size=size)
+        new_catch = catch_repository.add_user(user_id=user_id, species=species,
+                                              weight=weight, size=size)
         return jsonify({
                     "status": "success",
                     "sensor id": new_catch.id
