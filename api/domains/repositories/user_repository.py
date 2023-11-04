@@ -25,10 +25,15 @@ def UserRepository():
     """
     def add_user(self, username):
         new_user = User(username=username)
-        _add_user(new_user)
-        return new_user
+        return _add_user(new_user)
 
+    """
+    Description: Edits biography of user
+    Arguments: id: uuid of user with biography to be edited
+    Returns: User: User with modified biography
+    """
     def edit_biograpgy(self, id, biography):
         user = self.session.get(User, id)
         user.set_biography(biography)
         self.session.commit()
+        return user
