@@ -43,3 +43,4 @@ const logout = async () => { //delete
     await signOut(auth);
 }
 
+export { signup, signin, logout, changepassword, resetpassword }
