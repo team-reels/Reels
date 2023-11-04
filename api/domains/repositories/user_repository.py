@@ -13,7 +13,7 @@ def UserRepository():
     Arguments: new_user: User representing user to be added
     Returns: User: User of added user data
     """
-    def _add_user(self, new_user: User) -> User:
+    def _add_user(self, new_user: User):
         self.session.add(new_user)
         self.session.commit()
         return new_user
@@ -23,7 +23,12 @@ def UserRepository():
     Arguments: username: str of new user
     Returns: User: User of added user data
     """
-    def add_user(self, username) -> User:
+    def add_user(self, username):
         new_user = User(username=username)
         _add_user(new_user)
         return new_user
+
+    def edit_biograpgy(self, id, biography):
+        user = self.session.get(User, id)
+        user.set_biography(biography)
+        self.session.commit()
