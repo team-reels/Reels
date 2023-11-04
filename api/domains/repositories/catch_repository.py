@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from domain.models.catch import Catch
+from domains.models.catch import Catch
 from random import randint
 
 
