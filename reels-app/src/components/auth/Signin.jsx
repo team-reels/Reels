@@ -1,8 +1,13 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { signin } from '../../api/auth.js';
 import '../../styles/auth.scss';
 
 function Signin() {
+	const [checked, setChecked] = useState(false);
+
+	useEffect(() => {
+		console.log(checked);
+	}, [checked])
 
     const signIn = (e) => {
 		e.preventDefault();
@@ -20,11 +25,9 @@ function Signin() {
 				<div className='input-container'>
 					<input id='password' type='password' placeholder='password' />
 				</div>
-				<div className='login-button'>
-					<button type='submit'>Login</button>
-				</div>
+					<button className='login-button' type='submit'>Login</button>
 				<label>
-					<input type="checkbox" checked="checked" name="remember"/> Remember me
+					<input type="checkbox" checked={checked} name="remember" onChange={() => setChecked(!checked)}/> Remember me
 				</label>
 			</form>
 		</div>

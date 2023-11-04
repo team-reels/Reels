@@ -1,4 +1,5 @@
 @import '../utils/theme.scss';
+
 /* Bordered form */
 form {
     border: 3px solid #f1f1f1;
@@ -29,8 +30,8 @@ form {
   }
 
   .login-button {
-    // background-color: #04AA6D;
-    color: $blue-green;
+    background-color: #04AA6D;
+    color: black;
     padding: 14px 20;
     margin: 8px 0;
     border: none;
