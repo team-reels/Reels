@@ -37,7 +37,7 @@ def add_comment():
                                                    catch_id = catch_id, comment=comment)
         return jsonify({
                     "status": "success",
-                    "sensor id": new_comment.id
+                    "id": new_comment.id
                 })
 
 @comment_blueprint.route("/get_comment", methods=["GET"])
