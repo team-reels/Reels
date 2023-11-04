@@ -28,8 +28,9 @@ class CatchRepository:
     """
     def add_catch(self, user_id, species, weight, size):
         type = randint(1, 5)
+        likes = 0
         new_catch = Catch(user_id=user_id, species=species,
-                          weight=weight, size=size, type=type)
+                          weight=weight, size=size, type=type, likes=likes)
         return self._add_catch(new_catch)
 
     """
