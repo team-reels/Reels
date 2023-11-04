@@ -1,7 +1,6 @@
 from domain.models.base import Base
 from sqlalchemy.orm import Mapped, mapped_column
-from sqlalchemy import String, DateTime
-from sqlalchemy.sql import func
+from sqlalchemy import String
 from sqlalchemy import ForeignKey
 from uuid import uuid4
 from sqlalchemy.dialects.postgresql import UUID
