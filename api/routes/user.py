@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, request
 from domains.repositories.user_repository import UserRepository
 from engine import engine
 from sqlalchemy.orm import Session
+from domains.repositories.repo_exceptions import *
 
 user_blueprint = Blueprint('user_api', __name__, url_prefix="/user_api")
 
@@ -20,11 +21,19 @@ def add_user():
 
     with Session(engine) as session:
         user_repository = UserRepository(session)
-        new_user = user_repository.add_user(username)
+        try:
+            new_user = user_repository.add_user(username)
+        except UsernameExistsException:
+            return jsonify({
+                "status": "failure",
+                "reason": "username exists"
+            })
+
+
         return jsonify({
-                    "status": "success",
-                    "user id": new_user.id
-                })
+            "status": "success",
+            "user id": new_user.id
+            })
 
 
 @user_blueprint.route("/get_user", methods=["POST"])
