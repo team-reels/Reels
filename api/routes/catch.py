@@ -41,7 +41,7 @@ def add_catch():
 
     with Session(engine) as session:
         catch_repository = CatchRepository(session)
-        new_catch = catch_repository.add_user(user_id=user_id, species=species,
+        new_catch = catch_repository.add_catch(user_id=user_id, species=species,
                                               weight=weight, size=size)
         return jsonify({
                     "status": "success",
