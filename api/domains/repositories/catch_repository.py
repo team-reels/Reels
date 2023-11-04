@@ -1,5 +1,6 @@
 from sqlalchemy.orm import Session
 from domain.models.catch import Catch
+from random import randint
 
 
 def UserRepository():
@@ -20,10 +21,13 @@ def UserRepository():
 
     """
     Description: Adds new Catch object to be persisted
-    Arguments: username: str of new user
+    Arguments: user_id: uuid of uploader's id, species: str of species of added catch,
+               weight: float of weight of added catch, size: float of weight of added catch,
+               type: int of type of added catch
     Returns: User: User of added user data
     """
-    def add_catch(self, user_id, species, weight, size, type):
+    def add_catch(self, user_id, species, weight, size):
+        type = randint(1, 5)
         new_catch = Catch(user_id=user_id, species=species,
                           weight=weight, size=size, type=type)
         return _add_catch(new_catch)
