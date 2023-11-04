@@ -3,7 +3,7 @@ from domains.models.catch import Catch
 from random import randint
 
 
-def UserRepository():
+def CatchRepository():
     db_session: Session
 
     def __init__(self, db_session: Session):
