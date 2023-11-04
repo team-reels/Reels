@@ -20,7 +20,7 @@ function Signin() {
 				<div className='input-container'>
 					<input id='password' type='password' placeholder='password' />
 				</div>
-				<div className='input-container'>
+				<div className='login-button'>
 					<button type='submit'>Login</button>
 				</div>
 				<label>
