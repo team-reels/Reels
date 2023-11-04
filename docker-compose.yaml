@@ -1,0 +1,27 @@
+version: "3"
+services:
+  postgres:
+    build:
+      context: .
+      dockerfile: ./db/db.dockerfile 
+    image: "reels-db"
+    container_name: "reels-db" 
+    environment:
+      POSTGRES_DB: "reels"
+      POSTGRES_USER: "reels"
+      POSTGRES_PASSWORD: "reels" 
+      PGDATA: "/data/reels"
+    volumes:
+       - reels:/data/reels
+    networks:
+       - db-subnet 
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+volumes:
+  reels:
+    external: true
+networks:
+  db-subnet:
+    internal: true
+
