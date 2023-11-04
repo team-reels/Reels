@@ -27,3 +27,12 @@ def UserRepository():
         new_catch = Catch(user_id=user_id, species=species,
                           weight=weight, size=size, type=type)
         return _add_catch(new_catch)
+
+    """
+    Description: Gets an existing Catch
+    Arguments: id: uuid of Catch
+    Returns: Catch: Catch obtained from persisted data
+    """
+    def get_catch(self, id):
+        catch = self.session.get(Catch, id)
+        return catch
