@@ -30,8 +30,9 @@ function Signin() {
 					<button className='login-button' type='submit'>Login</button>
 				<label>
 					<input type="checkbox" checked={checked} name="remember" onChange={() => setChecked(!checked)}/> Remember me
+					<Link to='/forgot' style={{textAlign:'right', display:'inline-block', float:'right'}}>Forgot Password</Link>
 				</label>
-				<Link to='/forgot'>Forgot Password</Link>
+				<div class="divider">or</div>
 			</form>
 		</div>
 	);

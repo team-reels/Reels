@@ -19,10 +19,13 @@ form {
 .input{
     width: 100%;
     padding: 12px 20px;
-    margin: 4px;
+    margin: 2px;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
+}
+.checkbox{
+    float: left;
 }
   
   /* Set a style for all buttons */
@@ -45,14 +48,17 @@ form {
     cursor: pointer;
     width: 100%;
   }
-  p {
-    // background-color: #04AA6D;
-    color: black;
-    padding: 14px 20;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    display: inline;
+  .divider {
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .divider::before, .divider::after {
+    flex: 1;
+    content: '';
+    padding: 1px;
+    background-color: lightgray;
+    margin: 3px;
   }
   
