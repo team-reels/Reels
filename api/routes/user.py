@@ -36,7 +36,7 @@ def add_user():
             })
 
 
-@user_blueprint.route("/get_user", methods=["POST"])
+@user_blueprint.route("/get_user", methods=["GET"])
 def get_user():
     context = request.get_json()
 
@@ -52,5 +52,6 @@ def get_user():
         return jsonify({
                     "status": "success",
                     "user id": user.id,
-                    "username": user.username
+                    "username": user.username,
+                    "biography": user.biography
                 })
