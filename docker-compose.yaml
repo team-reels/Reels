@@ -18,6 +18,23 @@ services:
     ports:
       - "5432:5432"
     restart: unless-stopped
+  api:
+      build:
+        context: .
+        dockerfile: ./api/api.dockerfile
+      image: "reels-api"
+      container_name: "reels-api"
+      environment:
+        DB_HOSTNAME: "reels"
+        DB_USER: "reels"
+        DB_PASSWORD: "reels" 
+        DB_PORT: 5432
+        DB_NAME: "reels"
+      networks:
+         - db-subnet 
+      ports:
+        - "5050:5050"
+      restart: unless-stopped
 volumes:
   reels:
     external: true
