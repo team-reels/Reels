@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from domain.repositories.user_repository import UserRepository
+from domains.repositories.user_repository import UserRepository
 from engine import engine
 from sqlalchemy.orm import Session
 

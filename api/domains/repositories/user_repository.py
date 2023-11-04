@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from domain.models.user import User
+from domains.models.user import User
 
 
 def UserRepository():

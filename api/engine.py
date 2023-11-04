@@ -1,5 +1,5 @@
 from sqlalchemy import create_engine
-from domain.models.base import Base
+from domains.models.base import Base
 from config import *
 
 #WARNING!!! DO NOT USE THIS IN PRODUCTION uwu. EVEN HAVING THIS HERE IS VERY BAD PRACTICE FOR OBVIOUS REASONS
