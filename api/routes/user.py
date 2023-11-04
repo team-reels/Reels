@@ -23,5 +23,25 @@ def add_user():
         new_user = user_repository.add_user(username)
         return jsonify({
                     "status": "success",
-                    "sensor id": new_user.id
+                    "user id": new_user.id
+                })
+
+
+@user_blueprint.route("/get_user", methods=["POST"])
+def get_user():
+    context = request.get_json()
+
+    if context.get("id") is None:
+        return jsonify({
+                "status": "failure",
+                "reason": "missing id"
+            })
+
+    with Session(engine) as session:
+        user_repository = UserRepository(session)
+        user = user_repository.get(id)
+        return jsonify({
+                    "status": "success",
+                    "user id": user.id,
+                    "username": user.username
                 })
