@@ -89,10 +89,12 @@ def edit_catch():
         catch_repository = CatchRepository(session)
         catch = catch_repository.get_catch(id)
 
-        if catch.user_id != user_id:
+        if str(catch.user_id) != user_id:
             return jsonify({
                     "status": "failure",
-                    "reason": "incorrect user"
+                    "reason": "incorrect user",
+                    "user_id": user_id,
+                    "catch.user_id": catch.user_id
                 })
 
         catch_repository.edit_catch(id=id, species=species, weight=weight, size=size)
@@ -101,7 +103,7 @@ def edit_catch():
                     "catch id": catch.id
                 })
 
-@catch_blueprint.route("/get_catch", methods=["POST"])
+@catch_blueprint.route("/get_catch", methods=["GET"])
 def get_catch():
     context = request.get_json()
 
