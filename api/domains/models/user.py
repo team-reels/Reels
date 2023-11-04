@@ -13,10 +13,11 @@ class User(Base):
                                  default=uuid4)
 
     username: Mapped[str] = mapped_column(String(64),
-                                          nullable=False)
+                                          nullable=False,
+                                          unique=True)
 
     biography: Mapped[str] = mapped_column(String(512),
-                                          nullable=False)
+                                          nullable=True)
 
     def get_username(self):
         return self.username
