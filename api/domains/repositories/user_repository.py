@@ -28,6 +28,15 @@ def UserRepository():
         return _add_user(new_user)
 
     """
+    Description: Gets an existing User
+    Arguments: id: uuid of User
+    Returns: User: user obtained from persisted data
+    """
+    def get_user(self, id):
+        user = self.session.get(User, id)
+        return user
+
+    """
     Description: Edits biography of user
     Arguments: id: uuid of user with biography to be edited
     Returns: User: User with modified biography
