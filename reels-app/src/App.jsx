@@ -9,7 +9,7 @@ import Protected from './components/Protected';
 import SignIn from './components/auth/Signin';
 import SignUp from './components/auth/Signup';
 
-import './App.css'
+import './App.scss'
 
 function App() {
 
