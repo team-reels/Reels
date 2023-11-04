@@ -41,3 +41,18 @@ class CatchRepository:
     def get_catch(self, id):
         catch = self.session.get(Catch, id)
         return catch
+
+    """
+    Description: Adds new Catch object to be persisted
+    Arguments: user_id: uuid of uploader's id, species: str of species of added catch,
+               weight: float of weight of added catch, size: float of weight of added catch,
+               type: int of type of added catch
+    Returns: User: User of added user data
+    """
+    def edit_catch(self, id, species, weight, size):
+        catch = self.session.get(Catch, id)
+        catch.species = species
+        catch.weight = weight
+        catch.size = size
+        self.session.commit()
+        return catch
