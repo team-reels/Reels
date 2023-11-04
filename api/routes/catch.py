@@ -102,7 +102,7 @@ def add_catch():
                 })
 
 @catch_blueprint.route("/get_catch", methods=["POST"])
-def add_catch():
+def get_catch():
     context = request.get_json()
 
     if context.get("id") is None:
