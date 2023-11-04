@@ -1,10 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom';
 import App from './App.jsx'
 import './index.css'
 
+import { initializeApp } from "firebase/app";
+
+const config = JSON.parse(process.env.FIREBASE_CONFIG);
+const app = initializeApp(config);
+
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  <BrowserRouter>
     <App />
-  </React.StrictMode>,
+  </BrowserRouter>
 )
