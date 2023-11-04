@@ -32,8 +32,9 @@ services:
         DB_NAME: "reels"
       networks:
          - db-subnet 
+         - api-subnet 
       ports:
-        - "5050:5050"
+        - "8000:8000"
       restart: unless-stopped
 volumes:
   reels:
@@ -41,4 +42,4 @@ volumes:
 networks:
   db-subnet:
     internal: true
-
+  api-subnet:
