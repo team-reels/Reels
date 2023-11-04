@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from domain.models.comment import Comment
+from domains.models.comment import Comment
 
 
 def UserRepository():
