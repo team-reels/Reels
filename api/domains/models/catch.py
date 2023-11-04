@@ -15,12 +15,12 @@ class Catch(Base):
                                  default=uuid4)
     post_time: Mapped[DateTime] = mapped_column(DateTime(timezone=True),
                                                 server_default=func.now())
-    user_id: Mapped[UUID] = mapped_column(ForeignKey("user.id"),
+    user_id: Mapped[UUID] = mapped_column(ForeignKey("users.id"),
                                             nullable=False)
     species: Mapped[str] = mapped_column(String(128), nullable=False)
     weight: Mapped[float] = mapped_column(nullable=False)
     size: Mapped[float] = mapped_column(nullable=False)
-    fish_type: Mapped[int] = mapped_column(nullable=False)
+    type: Mapped[int] = mapped_column(nullable=False)
     likes: Mapped[int] = mapped_column(nullable=False)
 
     def get_post_time(self):
