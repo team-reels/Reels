@@ -3,7 +3,7 @@ from domains.models.catch import Catch
 from random import randint
 
 
-def CatchRepository():
+class CatchRepository:
     db_session: Session
 
     def __init__(self, db_session: Session):
@@ -30,7 +30,7 @@ def CatchRepository():
         type = randint(1, 5)
         new_catch = Catch(user_id=user_id, species=species,
                           weight=weight, size=size, type=type)
-        return _add_catch(new_catch)
+        return self._add_catch(new_catch)
 
     """
     Description: Gets an existing Catch

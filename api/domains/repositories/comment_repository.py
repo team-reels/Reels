@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 from domains.models.comment import Comment
 
 
-def CommentRepository():
+class CommentRepository:
     db_session: Session
 
     def __init__(self, db_session: Session):
@@ -26,7 +26,7 @@ def CommentRepository():
     def add_comment(self, comment, user_id, catch_id):
         new_comment = Comment(comment=comment,
                               user_id=user_id, catch_id=catch_id)
-        return _add_comment(new_comment)
+        return self._add_comment(new_comment)
 
     """
     Description: Gets an existing Comment

@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 from domains.models.user import User
 
 
-def UserRepository():
+class UserRepository:
     db_session: Session
 
     def __init__(self, db_session: Session):
@@ -25,7 +25,7 @@ def UserRepository():
     """
     def add_user(self, username):
         new_user = User(username=username)
-        return _add_user(new_user)
+        return self._add_user(new_user)
 
     """
     Description: Gets an existing User
