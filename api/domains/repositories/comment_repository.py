@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 from domains.models.comment import Comment
 
 
-def UserRepository():
+def CommentRepository():
     db_session: Session
 
     def __init__(self, db_session: Session):
