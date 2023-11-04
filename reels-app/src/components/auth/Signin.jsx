@@ -23,6 +23,9 @@ function Signin() {
 				<div className='input-container'>
 					<button type='submit'>Login</button>
 				</div>
+				<label>
+					<input type="checkbox" checked="checked" name="remember"/> Remember me
+				</label>
 			</form>
 		</div>
 	);
