@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 comment_blueprint = Blueprint('comments', __name__, url_prefix="/comment_api")
 
 @comment_blueprint.route("/add_catch", methods=["POST"])
-def add_user():
+def add_comment():
     context = request.get_json()
 
     if context.get("user_id") is None:

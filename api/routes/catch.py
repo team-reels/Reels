@@ -7,7 +7,7 @@ catch_blueprint = Blueprint('catches', __name__, url_prefix="/catch_api")
 
 
 @catch_blueprint.route("/add_catch", methods=["POST"])
-def add_user():
+def add_catch():
     context = request.get_json()
 
     if context.get("user_id") is None:
