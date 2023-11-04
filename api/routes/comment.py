@@ -39,3 +39,24 @@ def add_comment():
                     "status": "success",
                     "sensor id": new_comment.id
                 })
+
+@comment_blueprint.route("/get_comment", methods=["GET"])
+def get_comment():
+    context = request.get_json()
+
+    if context.get("id") is None:
+        return jsonify({
+                "status": "failure",
+                "reason": "missing id"
+            })
+
+    id = context.get("id")
+
+    with Session(engine) as session:
+        comment_repository = CommentRepository(session)
+        comment = comment_repository.get_comment(id=id)
+        return jsonify({
+                    "status": "success",
+                    "id": comment.id,
+                    "comment": comment
+                })
