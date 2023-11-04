@@ -10,8 +10,3 @@ def init_app():
     app.register_blueprint(comment_blueprint)
     app.register_blueprint(catch_blueprint)
     return app
-
-
-if __name__ == "__main__":
-    app = init_app()
-    app.run(host='0.0.0.0', port=5050)
