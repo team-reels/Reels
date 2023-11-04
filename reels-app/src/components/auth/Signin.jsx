@@ -18,13 +18,13 @@ function Signin() {
 	};
 	return (
 		<div className='signin-container'>
-			<form onSubmit={signIn}>
-				<div className='input-container'>
-					<input id='email' type='email' placeholder='email' />
-				</div>
-				<div className='input-container'>
-					<input id='password' type='password' placeholder='password' />
-				</div>
+			<form className='signin-form' onSubmit={signIn}>
+				<label>
+					<input className='input' id='email' type='email' placeholder='email' />
+					</label>
+					<label>
+					<input className='input' id='password' type='password' placeholder='password' />
+					</label>
 					<button className='login-button' type='submit'>Login</button>
 				<label>
 					<input type="checkbox" checked={checked} name="remember" onChange={() => setChecked(!checked)}/> Remember me
