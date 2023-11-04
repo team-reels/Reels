@@ -12,8 +12,7 @@ def add_catch():
 
     if context.get("user_id") is None:
         return jsonify({
-                "status": "failure",
-                "reason": "missing user_id"
+                "status": "failure", "reason": "missing user_id"
             })
 
     if context.get("species") is None:
