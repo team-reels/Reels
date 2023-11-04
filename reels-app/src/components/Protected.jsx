@@ -1,8 +1,8 @@
 // Private Route
 
-import {Navigate, Outlet} from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import React, {useContext} from 'react';
-import {AuthContext} from '../context/AuthContext';
+import { AuthContext } from '../contexts/AuthContext';
 
 /** Private route wrapper
  *  If authorized, return an outlet that will render child elements
