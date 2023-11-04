@@ -58,5 +58,5 @@ def get_comment():
         return jsonify({
                     "status": "success",
                     "id": comment.id,
-                    "comment": comment
+                    "comment": comment.comment
                 })
