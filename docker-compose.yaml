@@ -25,7 +25,7 @@ services:
       image: "reels-api"
       container_name: "reels-api"
       environment:
-        DB_HOSTNAME: "reels"
+        DB_HOSTNAME: "reels-db"
         DB_USER: "reels"
         DB_PASSWORD: "reels" 
         DB_PORT: 5432
