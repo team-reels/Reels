@@ -3,10 +3,10 @@ from domain.repositories.user_repository import UserRepository
 from engine import engine
 from sqlalchemy.orm import Session
 
-user_api = Blueprint('user_api', __name__, url_prefix="/user_api")
+user_blueprint = Blueprint('user_api', __name__, url_prefix="/user_api")
 
 
-@user_api.route("/add_user", methods=["POST"])
+@user_blueprint.route("/add_user", methods=["POST"])
 def add_user():
     context = request.get_json()
 
