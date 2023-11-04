@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import { signin } from '../../api/auth.js';
+import { Link } from 'react-router-dom';
 import '../../styles/auth.scss';
 
 function Signin() {
 	const [checked, setChecked] = useState(false);
+	const [forgot, setForgot] = useState(false);
 
 	useEffect(() => {
 		console.log(checked);
@@ -29,6 +31,7 @@ function Signin() {
 				<label>
 					<input type="checkbox" checked={checked} name="remember" onChange={() => setChecked(!checked)}/> Remember me
 				</label>
+				<Link to='/forgot'>Forgot Password</Link>
 			</form>
 		</div>
 	);

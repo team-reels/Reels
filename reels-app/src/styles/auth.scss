@@ -6,7 +6,7 @@ form {
   }
   
 .signin-form {
-  width: 100%;
+  width: 30%;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -44,5 +44,15 @@ form {
     border: none;
     cursor: pointer;
     width: 100%;
+  }
+  p {
+    // background-color: #04AA6D;
+    color: black;
+    padding: 14px 20;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    display: inline;
   }
   
