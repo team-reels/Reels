@@ -114,10 +114,10 @@ def get_catch():
     if context.get("cid") is None:
         return jsonify({
                 "status": "failure",
-                "reason": "missing id"
+                "reason": "missing cid"
             })
 
-    id = context.get("id")
+    id = context.get("cid")
 
     with Session(engine) as session:
         catch_repository = CatchRepository(session)
