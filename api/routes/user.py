@@ -16,17 +16,28 @@ def add_user():
                 "status": "failure",
                 "reason": "missing username"
             })
+    if context.get("uid") is None:
+        return jsonify({
+                "status": "failure",
+                "reason": "missing uid"
+            })
 
     username = context.get("username")
+    id = context.get("uid")
 
     with Session(engine) as session:
         user_repository = UserRepository(session)
         try:
-            new_user = user_repository.add_user(username)
+            new_user = user_repository.add_user(id, username)
         except UsernameExistsException:
             return jsonify({
                 "status": "failure",
                 "reason": "username exists"
+            })
+        except IdExistsException:
+            return jsonify({
+                "status": "failure",
+                "reason": "id exists"
             })
 
 
