@@ -1,6 +1,6 @@
 import { useEffect, useContext, useState } from 'react';
 import { FaCircleUser, FaPlus} from 'react-icons/fa6';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../styles/nav.scss';
 import { AuthContext } from '../contexts/AuthContext';
 import { logout } from '../api/auth';
@@ -8,9 +8,11 @@ import { logout } from '../api/auth';
 
 function App() {
 	const { currentUser } = useContext(AuthContext)
+	const navigate = useNavigate();
 
 	const doLogOut = () => {
 		logout();
+		navigate('/signin');
 	}
 	
 	return (

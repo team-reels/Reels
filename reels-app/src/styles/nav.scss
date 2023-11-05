@@ -22,13 +22,8 @@
 		padding-left: 30px;
 	}
 
-	svg {
-		// padding-right: 30px;
-	}
-
-	.right-nav{
-		display: flex;
-		align-items: center;
+	> a > svg {
+		padding-right: 30px;
 	}
 
 	a {
