@@ -49,7 +49,7 @@ if RESET_DB:
         catch2.size = 2
         catch2.type = 2
         catch2.likes = 5
-        catch2.image_id = "124u1o3u102391120938102"
+        catch2.image_id = "wow"
         session.add(catch2)
 
         catch3 = Catch()
@@ -59,7 +59,7 @@ if RESET_DB:
         catch3.size = 1
         catch3.type = 1
         catch3.likes = 2
-        catch3.image_id = "a091832098123"
+        catch3.image_id = "wow2"
         session.add(catch3)
 
         catch4 = Catch()
