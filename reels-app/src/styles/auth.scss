@@ -3,28 +3,41 @@
 /* Bordered form */
 form {
     border: 3px solid #f1f1f1;
-  }
+}
   
-.signin-form {
-  width: 30%;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
+.content-container {
+	height: 90%;
+	grid-template-rows: [spacer] 20% [content] 60% [spacer] 20%;
+}
 
-  > :not(:first-child) {
-    margin-top: 20px;
-  }
+.auth-container {
+	grid-area: content;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.auth-form {
+	width: 75%;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+
+	> :not(:first-child) {
+		margin-top: 20px;
+	}
 }
 
 .forgot-form {
-  width: 30%;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
+	width: 30%;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
 
-  > :not(:first-child) {
-    margin-top: 20px;
-  }
+	> :not(:first-child) {
+		margin-top: 20px;
+	}
 }
 
 .input{
@@ -39,8 +52,8 @@ form {
     float: left;
 }
   
-  /* Set a style for all buttons */
-  button {
+/* Set a style for all buttons */
+button {
     background-color: black;
     color: $blue-green;
     padding: 14px 20;
@@ -48,40 +61,46 @@ form {
     border: none;
     cursor: pointer;
     width: 100%;
-  }
+}
 
-  .login-button {
-    background-color: #04AA6D;
-    color: black;
-    padding: 14px 20;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%
-  }
-  .signin,
-  .signup{
-    background-color: white;
-    color: black;
-    padding: 14px 20;
-    margin: 8px 0;
-    border: 1px solid lightgray;
-    cursor: pointer;
-    width: 200px;
-    display: inline;
-    flex-direction: row;
-  }
-  .divider {
-    font-size: 15px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .divider::before, .divider::after {
-    flex: 1;
-    content: '';
-    padding: 1px;
-    background-color: lightgray;
-    margin: 3px;
-  }
+.login-button {
+	background-color: #04AA6D;
+	color: black;
+	padding: 14px 20;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 100%
+}
+.signin,
+.signup{
+	background-color: white;
+	color: black;
+	padding: 14px 20;
+	margin: 8px 0;
+	border: 1px solid lightgray;
+	cursor: pointer;
+	width: 200px;
+	display: inline;
+	flex-direction: row;
+}
+.signin {
+	margin-right: 5px;
+}
+.signup {
+	margin-left: 5px;
+}
+.divider {
+	font-size: 15px;
+	display: flex;
+	align-items: center;
+}
+
+.divider::before, .divider::after {
+	flex: 1;
+	content: '';
+	padding: 1px;
+	background-color: lightgray;
+	margin: 3px;
+}
   
