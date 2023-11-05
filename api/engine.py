@@ -24,6 +24,14 @@ if RESET_DB:
         session.add(user1)
         session.commit()
 
+        session.begin()
+        user2 = User()
+        user2.id = "5bLPjv7Rm3auBRCohfecCAiiWsQ2"
+        user2.username = "spongebob"
+        user2.biography = "Who lives in a pineapple under the sea?"
+        session.add(user2)
+        session.commit()
+
         catch1 = Catch()
         catch1.user_id = user1.id
         catch1.species = "fish"
@@ -36,19 +44,41 @@ if RESET_DB:
 
         catch2 = Catch()
         catch2.user_id = user1.id
-        catch2.species = "fish"
-        catch2.weight = 3.3
-        catch2.size = 1.4
+        catch2.species = "jellyfish"
+        catch2.weight = 4.2
+        catch2.size = 2
         catch2.type = 2
-        catch2.likes = 9
-        catch2.image_id = "83d4c9ee-0895-4dd4-b1f3-2c0c14290684"
+        catch2.likes = 5
+        catch2.image_id = "124u1o3u102391120938102"
         session.add(catch2)
+
+        catch3 = Catch()
+        catch3.user_id = user2.id
+        catch3.species = "fish"
+        catch3.weight = 2.9
+        catch3.size = 1
+        catch3.type = 1
+        catch3.likes = 2
+        catch3.image_id = "a091832098123"
+        session.add(catch3)
         session.commit()
 
-        comment = Comment()
-        comment.user_id = str(user1.id)
-        comment.catch_id = str(catch1.id)
-        comment.comment = "wow"
-        session.add(comment)
+        comment1 = Comment()
+        comment1.user_id = str(user1.id)
+        comment1.catch_id = str(catch1.id)
+        comment1.comment = "wow"
+        session.add(comment1)
+
+        comment2 = Comment()
+        comment2.user_id = str(user2.id)
+        comment2.catch_id = str(catch1.id)
+        comment2.comment = "nice"
+        session.add(comment2)
+
+        comment3 = Comment()
+        comment3.user_id = str(user1.id)
+        comment3.catch_id = str(catch3.id)
+        comment3.comment = "damn"
+        session.add(comment3)
 
         session.commit()
