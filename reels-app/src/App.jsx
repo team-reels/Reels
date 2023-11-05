@@ -28,7 +28,7 @@ function App() {
 
                 <Route path='/add' element={<Add />} />
 
-                <Route path="/catch" element={<Catch />} />
+                <Route path="/c/:cid" element={<Catch />} />
 
                 <Route path='/signin' element={<CounterProtected />}>
                     <Route path="/signin" element={<Signin />} />

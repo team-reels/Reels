@@ -8,10 +8,10 @@ function Home() {
 	const [catchData, setCatchData] = useState([]);
 
 	useEffect(() => {
-		// paginate 10 per
+		// 10 random catches per load
 		const fetchData = async () => {
 			try {
-				const { data } = await axios.post("http://localhost:8000/catch_api/get_catches");
+				const { data } = await axios.post("http://localhost:8000/catch_ap/get_catches", {n: 10});
 				
 				if(!data) throw 'No catches found';
 
