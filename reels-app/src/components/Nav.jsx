@@ -1,5 +1,5 @@
 import { useEffect, useContext, useState } from 'react';
-import { FaCircleUser } from 'react-icons/fa6';
+import { FaCircleUser, FaPlus} from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 import '../styles/nav.scss';
 import { AuthContext } from '../contexts/AuthContext';
