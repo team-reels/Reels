@@ -22,7 +22,7 @@ function App() {
 
                 <Route path="/u/:uid" element={<User />} />
 
-                {/* <Route path="/catch" element={<Catch />} /> */}
+                <Route path="/catch" element={<Catch />} />
 
                 <Route path="/signin" element={<SignIn />} />
                 <Route path="/signup" element={<SignUp />} />

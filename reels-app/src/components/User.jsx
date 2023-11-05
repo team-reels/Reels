@@ -4,6 +4,8 @@ import { AuthContext } from '../contexts/AuthContext';
 import CatchDex from './subcomponents/CatchDex';
 import useAxios from '../hooks/useAxios';
 import dev_fish from '../assets/dev_fish.jpg';
+import { FaCircleUser } from 'react-icons/fa6';
+import '../styles/user.scss'
 
 function User() {
 	// create link by auth?
@@ -69,21 +71,26 @@ function User() {
 	
   	return (
 		<div className='content-container user'>
-			<div className='user-profile'>
-				<div className='user-image'>
-					<img src={userData.image} alt='user'></img>
+			<div className='user'>
+				<div className='user-profile'>
+					<div className='user-image'>
+						
+						{/* conditional for svg if no image */}
+						<FaCircleUser size={55}/> 
+						{/* <img src={userData.image} alt='user'></img> */}
+					</div>
+					<div className='user-info'>
+						<div className='user-name'>{userData.username}</div>
+						<div className='user-following'>Following: {userData.following}</div>
+						<div className='user-followers'>Followers: {userData.followers}</div>
+					</div>
+					<div className='user-bio'>
+						{userData.bio}
+					</div>
 				</div>
-				<div className='user-info'>
-					<div className='user-name'>{userData.username}</div>
-					<div className='user-following'>Following: {userData.following}</div>
-					<div className='user-followers'>Followers: {userData.followers}</div>
+				<div className='user-catches'>
+					{catchData}
 				</div>
-				<div className='user-bio'>
-					{userData.bio}
-				</div>
-			</div>
-			<div className='user-catches'>
-				{catchData}
 			</div>
 		</div>
 	);
