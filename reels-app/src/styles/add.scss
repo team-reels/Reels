@@ -1,0 +1,28 @@
+@import '../utils/theme.scss';
+
+.add-container{
+    width:100%;
+    height:auto;
+    display:flex;
+}
+.form-container{
+    background-color: $blue-green;
+    height:100%;
+    width:fit-content;
+    display: flex;
+    flex-direction: column;
+    margin-left: 200px;
+    padding: 20px;
+    margin-top:40px;
+    align-items: right;
+
+    label{
+        width:fit-content;
+
+    }
+    .input{
+        border: 1px black;
+        margin: 20px;
+        width: 50%;
+    }
+}

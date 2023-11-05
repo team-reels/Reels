@@ -13,14 +13,15 @@ const { currentUser } = useContext(AuthContext)
 				<h1>Reels</h1> {/* replace with svg? */}
 			</Link>
 
-			{  	currentUser 
+			{/* {  	currentUser 
 				? 
 				<div>
 				<Link to='/add'><FaPlus size={30}/></Link> 
 				<Link to='/user'><FaCircleUser size={30}/></Link>
 				</div>
 				: <Link to='/user'><FaCircleUser size={30}/></Link>
-			}
+			} */}
+			<Link to='/user'><FaCircleUser size={30}/></Link>
 
 
 		</header>
