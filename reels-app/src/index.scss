@@ -72,13 +72,4 @@ button:focus-visible {
 #root {
 	width: 100%;
 	height: 100vh;
-	
-	// immediate div child (component)
-	> div {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		margin: 50px 50px 50px 50px; //top right bottom left
-		padding-bottom: 50px;
-	}
 }
