@@ -16,25 +16,28 @@ function Add() {
 				<form className='form-container-add'>
 					<label className='add-label'>
 						Species:
-						<input
+
+					</label>
+					<input
 							className="input"
 							id="species"
 						/>
-					</label>
 					<label className='add-label'>
 						Weight:
-						<input
+
+					</label>
+					<input
 							className="input"
 							id="length"
 						/>
-					</label>
 					<label className='add-label'>
 						Length:
-						<input
+
+					</label>
+					<input
 							className="input"
 							id="weight"
 						/>
-					</label>
 					{/* <label>
 						Bio:
 						<input
