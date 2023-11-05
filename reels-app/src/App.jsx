@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import Home from './components/Home';
+import Add from './components/Add';
 import Nav from './components/Nav';
 import User from './components/User';
 import Catch from './components/Catch';
@@ -27,7 +28,7 @@ function App() {
                 <Route path="/signin" element={<SignIn />} />
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/forgot" element={<ForgotPassword />} />
-
+                <Route path="/add" element={<Add />} />
                 <Route path="*" element={<Protected />}>
                     <Route path="*" element={<Home />} />
                 </Route>

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FaCircleUser } from 'react-icons/fa6';
+import { FaCircleUser, FaPlus} from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 import '../styles/nav.scss';
 
@@ -12,6 +12,9 @@ function App() {
             <h1>Reels</h1> {/* replace with svg? */}
         </Link>
         <Link to='/user'>
+            <FaCircleUser size={30}/>
+        </Link>
+        <Link to='/add'>
             <FaCircleUser size={30}/>
         </Link>
     </header>
