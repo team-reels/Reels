@@ -3,39 +3,47 @@ import CatchCard from './subcomponents/CatchCard';
 import { AuthContext } from '../contexts/AuthContext';
 import dev_fish from '../assets/dev_fish.jpg';
 import '../styles/home.scss';
+import axios from 'axios';
 
 function Home() {
+	const [loading, setLoading] = useState(true);
 	const [catchData, setCatchData] = useState([]);
 
 	useEffect(() => {
-		// paginate 10 per
+		// 10 random catches per load
 		const fetchData = async () => {
 			try {
-				const { data } = await axios.post("http://localhost:8000/catch_api/get_catches");
-				
-				if(!data) throw 'No catches found';
+				const { data } = await axios.post("http://localhost:8000/catch_api/get_n_catches", {n: 10});
 
-				let catchList = [];
-				for(const fish in data) {
-					catchList.append(<CatchCard key={fish.cid} cid={fish.cid} {...fish}/>);
+				if(!data || data.status == 'failure') throw 'Error: No catches found';
+
+				if(!data.catches){
+					return setCatchData([...catchList, <div>No catches left</div>]);
 				}
+
+				const catchList = await Promise.all(data.catches.map(async (fish) => {
+					return <CatchCard key={fish.cid} cid={fish.cid} {...fish}/>;
+				}));
+
 				setCatchData(catchList);
+				setLoading(false);	
 			} catch(e) {
 				console.log(e.message);
 			}
 		};
-		fetchData();
-		// gather catch data , set state
-		// const data = [
-		// 	//  species, weight, size, type, likes 
-		// 	<CatchCard key='1' cid='1' image={dev_fish} species='fish' weight={5} size={5} type='fish' likes={5}></CatchCard>,
-		// 	<CatchCard key='2' cid='2' image={dev_fish} species='bish' weight={5} size={5} type='fish' likes={5}></CatchCard>,
-		// 	<CatchCard key='3' cid='3' image={dev_fish} species='dish' weight={5} size={5} type='fish' likes={5}></CatchCard>,
-		// 	<CatchCard key='4' cid='4' image={dev_fish} species='kish' weight={5} size={5} type='fish' likes={5}></CatchCard>
-		// ];
-		// setCatchData(data);
+		Promise.resolve(fetchData());
 
 	}, []);
+
+	if(loading) {
+		return (
+			<div className='content-container home'>
+				<div className='home'>
+					<div>Loading...</div>
+				</div>
+			</div>
+		);
+	}
 
 	return (
 		<div className='content-container home'>
