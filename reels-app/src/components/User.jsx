@@ -14,6 +14,7 @@ function User() {
 
 	// temp user data
 	const userData = { //mock data. should use userData from useAxios
+		uid: 'g8Vs7pZe2GgnKqPmEIIv00hxus93',
 		image: dev_fish,
 		username: 'bob delor',
 		following: 14,
@@ -21,7 +22,7 @@ function User() {
 		bio: 'bio pppoopoo lorem ipsum cringe dolor pp pdwmda jowdawj dwadja wdnawjkdnawjk dnwajkdwna', //bio char limit 140
 		catches: [
 			{
-				id: '1',
+				cid: '1',
 				image: dev_fish,
 				species: 'fish',
 				weight: 5,
@@ -30,7 +31,7 @@ function User() {
 				likes: 5
 			},
 			{
-				id: '2',
+				cid: '2',
 				image: dev_fish,
 				species: 'fish',
 				weight: 5,
@@ -39,7 +40,7 @@ function User() {
 				likes: 5
 			},
 			{
-				id: '3',
+				cid: '3',
 				image: dev_fish,
 				species: 'fish',
 				weight: 5,
@@ -48,7 +49,7 @@ function User() {
 				likes: 5
 			},
 			{
-				id: '4',
+				cid: '4',
 				image: dev_fish,
 				species: 'fish',
 				weight: 5,
@@ -63,7 +64,7 @@ function User() {
 	useEffect(() => {
 		// convert catches to catch cards
 		const data = userData.catches.map((catchData) => {
-			return <CatchDex key={catchData.id} {...catchData} />;
+			return <CatchDex key={catchData.cid} {...catchData} />;
 		});
 
 		setCatchData(data);

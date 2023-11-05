@@ -1,16 +1,25 @@
 import { useEffect, useState } from "react";
 import { signup } from "../../api/auth.js";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../../styles/auth.scss";
 
-function SignUp() {
-	const signUp = (e) => {
+function Signup() {
+	const [error, setError] = useState("");
+	const navigate = useNavigate();
+
+	const doSignUp = async (e) => {
 		e.preventDefault();
 		const email = document.getElementById("email").value;
 		const username = document.getElementById("username").value;
 		const password = document.getElementById("password").value;
-		// continue with signin code here (import from api/auth.js and run code)
-		// navigate to '/'
+		try {
+			// TODO: VALIDATION
+			await signup(email, username, password);		
+			navigate('/signin');
+		} catch(e) {
+			console.log(`Error: ${e.message}`);
+			setError(e.message);
+		}
 	};
 
 	return (
@@ -24,7 +33,7 @@ function SignUp() {
 						<button className="signup">Sign Up</button>
 					</Link>
 				</div>
-				<form className="auth-form" onSubmit={signup}>
+				<form className="auth-form" onSubmit={doSignUp}>
 					<label>
 						<input
 							className="input"
@@ -49,6 +58,9 @@ function SignUp() {
 							placeholder="password"
 						/>
 					</label>
+					{	error && 
+						<span className='input-error'>{error}</span>
+					}
 					<button className="login-button" type="submit">
 						Login
 					</button>
@@ -58,4 +70,4 @@ function SignUp() {
 	);
 }
 
-export default SignUp;
+export default Signup;

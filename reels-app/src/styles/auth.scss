@@ -11,34 +11,23 @@ form {
 	grid-template-rows: [t] 20% [m] 60% [b] 20%;
 }
 
-.auth-container {
+.auth-container, .forgot-container {
 	grid-column: c;
 	grid-row: m;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-}
 
-.auth-form {
-	width: 75%;
-	padding: 20px;
-	display: flex;
-	flex-direction: column;
-
-	> :not(:first-child) {
-		margin-top: 20px;
-	}
-}
-
-.forgot-form {
-	width: 30%;
-	padding: 20px;
-	display: flex;
-	flex-direction: column;
-
-	> :not(:first-child) {
-		margin-top: 20px;
+	.auth-form, .forgot-form {
+		width: 75%;
+		padding: 20px;
+		display: flex;
+		flex-direction: column;
+	
+		> :not(:first-child) {
+			margin-top: 20px;
+		}
 	}
 }
 

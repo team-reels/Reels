@@ -5,9 +5,10 @@ import Home from './components/Home';
 import Nav from './components/Nav';
 import User from './components/User';
 import Catch from './components/Catch';
-import Protected from './components/Protected';
-import SignIn from './components/auth/Signin';
-import SignUp from './components/auth/Signup';
+import Protected from './components/middleware/Protected';
+import CounterProtected from './components/middleware/CounterProtected';
+import Signin from './components/auth/Signin';
+import Signup from './components/auth/Signup';
 import ForgotPassword from './components/auth/ForgotPassword';
 
 import './App.scss';
@@ -18,15 +19,25 @@ function App() {
             <Nav />
 
             <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path='/' element={<Protected />}>
+                    <Route path="/" element={<Home />} />
+                </Route>
 
                 <Route path="/u/:uid" element={<User />} />
 
                 <Route path="/catch" element={<Catch />} />
 
-                <Route path="/signin" element={<SignIn />} />
-                <Route path="/signup" element={<SignUp />} />
-                <Route path="/forgot" element={<ForgotPassword />} />
+                <Route path='/signin' element={<CounterProtected />}>
+                    <Route path="/signin" element={<Signin />} />
+                </Route>
+                <Route path='/signup' element={<CounterProtected />}>
+                    <Route path="/signup" element={<Signup />} />
+                </Route>
+                {/* TODO: LOGOUT */}
+                {/* <Route path='/logout' />  */}
+                <Route path='/forgot' element={<CounterProtected />}>
+                    <Route path="/forgot" element={<ForgotPassword />} />
+                </Route>
 
                 <Route path="*" element={<Protected />}>
                     <Route path="*" element={<Home />} />
