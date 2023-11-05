@@ -1,5 +1,5 @@
 //wrapper for bio and dex + other functions
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { AuthContext } from '../contexts/AuthContext';
 import CatchDex from './subcomponents/CatchDex';
 import dev_fish from '../assets/dev_fish.jpg';
@@ -9,6 +9,7 @@ import axios from 'axios';
 import { set } from 'immutable';
 
 function User() {
+	const { currentUser } = useContext(AuthContext);
 	const [userData, setUserData] = useState({});
 	const [loading, setLoading] = useState(true);
 	const [catchData, setCatchData] = useState([]);
@@ -16,7 +17,7 @@ function User() {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const { data } = await axios.post("http://localhost:8000/user_api/get_user", {uid: "g8Vs7pZe2GgnKqPmEIIv00hxus93"});
+				const { data } = await axios.post("http://localhost:8000/user_api/get_user", {uid: currentUser.uid});
 
 				
 				if(data || data.catches) {

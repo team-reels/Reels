@@ -17,7 +17,7 @@ const signup = async (email, username, password) => { //create
     await createUserWithEmailAndPassword(auth, email, password);
     await updateProfile(auth.currentUser, {username: username});
     const {data} = await axios.post('http://localhost:8000/user_api/add_user', {username: username, uid: auth.currentUser.uid});
-    if(!data) throw 'Problem adding user to database'
+    if(!data) throw 'Problem adding user to database';
 
     console.log(`Signup successful for ${username}`);
 }
