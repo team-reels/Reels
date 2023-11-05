@@ -27,6 +27,7 @@
     width: 100%;
     padding: 25px;  
     
+    
     ~ .catch-card {
         margin-top: 25px;
     }
@@ -41,22 +42,26 @@
         > div {
             display: inline-block;
         }
-        .card-icons {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            margin-top: 25px;
-        
-            > :not(:last-child) {
-                margin-right: 20px;
+
+            .card-icons {
+
+                display: flex;
+                align-items: center;
+                width: 100%;
+                margin-top: 25px;
+                color: black !important;
+            
+                > :not(:last-child) {
+                    margin-right: 20px;
+                }
             }
-            // .card-liked {
-            //     color: red;
+            // @media (forced-colors: active){
+            //     forced-color-adjust: none;
             // }
-            // .card-unliked {}
-        }
+
         .card-info {
             margin-top: 20px;
+            color: black !important;
         }
     }
 }
