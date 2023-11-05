@@ -17,12 +17,19 @@ function Signin() {
 		const password = document.getElementById('password').value;
 		// continue with signin code here (import from api/auth.js and run code)
 		// navigate to '/'
+		signin(email, password)
 	};
 	return (
 		<div className='signin-container'>
 			<div className='signin-signup'>
-				<button className='signin'>Sign In</button>
-				<button className='signup'>Sign Up</button>
+				<button className='signin'>
+					<Link to='/signin'>Sign In
+					</Link>
+				</button>
+				<button className='signup'>
+					<Link to='/signup'>Sign Up
+					</Link>
+				</button>
 			</div>
 			<form className='signin-form' onSubmit={signIn}>
 				<label>
