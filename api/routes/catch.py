@@ -37,14 +37,15 @@ def add_catch():
     species = context.get("species")
     weight = context.get("weight")
     size = context.get("weight")
+    image_id = context.get("image_id")
 
     with Session(engine) as session:
         catch_repository = CatchRepository(session)
         new_catch = catch_repository.add_catch(user_id=user_id, species=species,
-                                              weight=weight, size=size)
+                                              weight=weight, size=size, image_id=image_id)
         return jsonify({
                     "status": "success",
-                    "catch id": new_catch.id
+                    "catch_id": new_catch.id,
                 })
 
 @catch_blueprint.route("/edit_catch", methods=["POST"])
@@ -103,6 +104,7 @@ def edit_catch():
                     "catch id": catch.id
                 })
 
+
 @catch_blueprint.route("/get_catch", methods=["GET"])
 def get_catch():
     context = request.get_json()
@@ -127,4 +129,26 @@ def get_catch():
                     "size": catch.size,
                     "type": catch.type,
                     "likes": catch.likes
+                })
+
+
+@catch_blueprint.route("/get_catches", methods=["GET"])
+def get_catches():
+    context = request.get_json()
+
+    if context.get("user_id") is None:
+        return jsonify({
+                "status": "failure",
+                "reason": "missing user_id"
+            })
+
+    user_id = context.get("user_id")
+
+    with Session(engine) as session:
+        catch_repository = CatchRepository(session)
+        catches = catch_repository.get_catches(user_id)
+        catches_id = list(map(lambda x: x.id, catches))
+        return jsonify({
+                    "status": "success",
+                    "catches": catches_id,
                 })

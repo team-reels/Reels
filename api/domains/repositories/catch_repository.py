@@ -26,11 +26,11 @@ class CatchRepository:
                type: int of type of added catch
     Returns: User: User of added user data
     """
-    def add_catch(self, user_id, species, weight, size):
+    def add_catch(self, user_id, species, weight, size, image_id):
         type = randint(1, 5)
         likes = 0
         new_catch = Catch(user_id=user_id, species=species,
-                          weight=weight, size=size, type=type, likes=likes)
+                          weight=weight, size=size, type=type, likes=likes, image_id=image_id)
         return self._add_catch(new_catch)
 
     """
@@ -40,6 +40,14 @@ class CatchRepository:
     """
     def get_catch(self, id):
         catch = self.session.get(Catch, id)
+        return catch
+    """
+    Description: Gets an all catches for a user
+    Arguments: user_id: uuid of user
+    Returns: Catches: List[Catch] catches obtained from persisted data
+    """
+    def get_catches(self, user_id):
+        catch = self.session.query(Catch).filter(Catch.user_id == user_id).all()
         return catch
 
     """
