@@ -5,13 +5,15 @@ form {
     border: 3px solid #f1f1f1;
 }
   
-.content-container {
+.content-container.auth {
 	height: 90%;
-	grid-template-rows: [spacer] 20% [content] 60% [spacer] 20%;
+	grid-template-columns: [l] 30% [c] 40% [r] 30%;
+	grid-template-rows: [t] 20% [m] 60% [b] 20%;
 }
 
 .auth-container {
-	grid-area: content;
+	grid-column: c;
+	grid-row: m;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;

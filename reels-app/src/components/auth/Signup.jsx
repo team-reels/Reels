@@ -14,44 +14,46 @@ function SignUp() {
 	};
 
 	return (
-		<div className="auth-container">
-			<div className="auth-signup">
-				<Link to="/signin">
-					<button className="signin">Sign In</button>
-				</Link>
-				<Link to="/signup">
-					<button className="signup">Sign Up</button>
-				</Link>
+		<div className='content-container auth'>
+			<div className="auth-container">
+				<div className="auth-signup">
+					<Link to="/signin">
+						<button className="signin">Sign In</button>
+					</Link>
+					<Link to="/signup">
+						<button className="signup">Sign Up</button>
+					</Link>
+				</div>
+				<form className="auth-form" onSubmit={signup}>
+					<label>
+						<input
+							className="input"
+							id="email"
+							type="email"
+							placeholder="email"
+						/>
+					</label>
+					<label>
+						<input
+							className="input"
+							id="username"
+							type="username"
+							placeholder="username"
+						/>
+					</label>
+					<label>
+						<input
+							className="input"
+							id="password"
+							type="password"
+							placeholder="password"
+						/>
+					</label>
+					<button className="login-button" type="submit">
+						Login
+					</button>
+				</form>
 			</div>
-			<form className="auth-form" onSubmit={signup}>
-				<label>
-					<input
-						className="input"
-						id="email"
-						type="email"
-						placeholder="email"
-					/>
-				</label>
-				<label>
-					<input
-						className="input"
-						id="username"
-						type="username"
-						placeholder="username"
-					/>
-				</label>
-				<label>
-					<input
-						className="input"
-						id="password"
-						type="password"
-						placeholder="password"
-					/>
-				</label>
-				<button className="login-button" type="submit">
-					Sign Up
-				</button>
-			</form>
 		</div>
 	);
 }

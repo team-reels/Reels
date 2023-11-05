@@ -20,8 +20,10 @@ function Home() {
 	}, []);
 
 	return (
-		<div className='home'>
-			{catchData}
+		<div className='content-container home'>
+			<div className='home'>
+				{catchData}
+			</div>
 		</div>
 	);
 };
