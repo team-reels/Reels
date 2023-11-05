@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import '../styles/nav.scss';
 import { AuthContext } from '../contexts/AuthContext';
 import { getAuth } from 'firebase/auth';
+import { logout } from '../api/auth';
 
 
 function App() {
