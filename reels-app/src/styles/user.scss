@@ -29,6 +29,32 @@
     justify-content: center;
     align-items: center;
     padding-bottom: 25px;
+
+    .user-follow {
+        margin-top: 20px;
+        width: 50%;
+    }
+    .user-following {
+        margin-top: 20px;
+        width: 40%;
+        color: gray;
+    }
+    .user-following .unfollow-text {
+        display: none;
+    }
+    .user-following:hover .unfollow-text {
+        display: none;
+    }
+    .user-following:hover .following-text {
+        display: none;
+    }
+    .user-following:hover {
+        border-color: red !important;
+        > .unfollow-text {
+            display: inline;
+            color: red;
+        }
+    }
 }
 
 // catchdex
