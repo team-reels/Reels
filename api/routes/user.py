@@ -63,6 +63,9 @@ def get_user():
     uid = context.get("uid")
     with Session(engine) as session:
         user_repository = UserRepository(session)
+        catches_repository = CatchRepository(session)
+        catches = catches_repository.get_catches(uid)
+        catches = list(map(lambda x: x.id, catches))
         user = user_repository.get_user(uid)
         response = jsonify({
                     "status": "success",

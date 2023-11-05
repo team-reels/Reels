@@ -8,6 +8,8 @@ function Home() {
 	const [catchData, setCatchData] = useState([]);
 
 	useEffect(() => {
+		// paginate 10 per
+		
 		// gather catch data , set state
 		const data = [
 			//  species, weight, size, type, likes 
