@@ -3,7 +3,7 @@
 .nav {
     margin: 0;
 	font-size: 1.2rem;
-	height: 100px;
+	height: 10%;
 	width: 100%;
   	position: sticky;
 	display: flex;
@@ -15,14 +15,11 @@
 		display: flex;
 		justify-content: space-evenly;
 	}
-
-	a.title {
+	
+	h1 {
 		all: unset;
 		cursor: pointer;
-		font-size: 1.4rem;
-	}
-
-	h1 {
+		font-size: 2rem;
 		padding-left: 30px;
 	}
 
