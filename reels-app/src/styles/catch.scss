@@ -4,6 +4,10 @@
     width:100%;
     height:auto;
     display:flex;
+    background-color: $blue-green;
+    justify-content: space-around;
+    align-items: center;
+    font-family: monospace;
 
     .image-class{
         width: 50%;
@@ -18,11 +22,12 @@
     width:fit-content;
     display: flex;
     flex-direction: column;
-    margin-left: 200px;
+
+    // margin-left: 200px;
     padding: 20px;
-    margin-top:40px;
+    // margin-top:40px;
     align-items: right;
-    font-size: 50px;
+    font-size: 40px;
 
     label{
         width:fit-content;

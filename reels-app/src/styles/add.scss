@@ -9,6 +9,7 @@
     font-size: 30px;
     align-items: center;
     justify-content: space-around;
+    font-family: monospace;
     
     .add-pic{
         // margin-left:100px;
@@ -26,9 +27,11 @@
     align-items: center;
     font-size: 30px;
 
+
     .add-label{
         width:fit-content;
         margin-left: 20px;
+
     }
     .input{
         // border: 1px black;
