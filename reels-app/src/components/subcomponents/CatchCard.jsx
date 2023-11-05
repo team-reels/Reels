@@ -48,7 +48,10 @@ function CatchCard(props) {
                     </div> */}
                 </div>
                 <div className='card-info'>
-                    <div className='card-species'>Species: {species}</div>
+                    <div className='card-species'>
+                        Species:{species}
+                    
+                    </div>
                     {/* svg? */}
                     <div className='card-weight'>Weight: {weight}</div>
                     <div className='card-size'>Length: {size}</div>

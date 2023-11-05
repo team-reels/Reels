@@ -9,19 +9,19 @@ function Catch(props) { // need to receive bio in as well
   const [count, setCount] = useState(0);
 
   return (
-		<div className='add-container'>
+		<div className='catch-container'>
       <img className='image-class'src={dev_fish} alt='Fish'></img>
 				<form className='form-container'>
 					<label>
-						Species: 
+						Species:&nbsp;
 						{species}
 					</label>
 					<label>
-						Weight: 
+						Weight:&nbsp;
 						{weight}
 					</label>
 					<label>
-						Length: 
+						Length:&nbsp;
 						{size}
 					</label>
 					{/* <label>

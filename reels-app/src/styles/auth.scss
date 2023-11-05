@@ -1,14 +1,10 @@
 @import '../utils/theme.scss';
 
-/* Bordered form */
-form {
-    border: 3px solid #f1f1f1;
-}
-  
 .content-container.auth {
 	height: 90%;
 	grid-template-columns: [l] 30% [c] 40% [r] 30%;
 	grid-template-rows: [t] 20% [m] 60% [b] 20%;
+	background-color: $beige;
 }
 
 .auth-container {
