@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, request
 from domains.repositories.catch_repository import CatchRepository
+from domains.models.catch import Catch
 from engine import engine
 from sqlalchemy.orm import Session
 from flask_cors import CORS
@@ -114,10 +115,10 @@ def get_catch():
     if context.get("cid") is None:
         return jsonify({
                 "status": "failure",
-                "reason": "missing id"
+                "reason": "missing cid"
             })
 
-    id = context.get("id")
+    id = context.get("cid")
 
     with Session(engine) as session:
         catch_repository = CatchRepository(session)
@@ -149,7 +150,28 @@ def get_catches():
     with Session(engine) as session:
         catch_repository = CatchRepository(session)
         catches = catch_repository.get_catches(user_id)
-        catches_id = list(map(lambda x: x.id, catches))
+        catches_id = list(map(lambda x: Catch.to_JSON(x), catches))
+        return jsonify({
+                    "status": "success",
+                    "catches": catches_id,
+                })
+
+@catch_blueprint.route("/get_n_catches", methods=["POST"])
+def get_n_catches():
+    context = request.get_json()
+
+    if context.get("n") is None:
+        return jsonify({
+                "status": "failure",
+                "reason": "missing n"
+            })
+
+    n = context.get("n")
+
+    with Session(engine) as session:
+        catch_repository = CatchRepository(session)
+        catches = catch_repository.get_n_catches(n)
+        catches_id = list(map(lambda x: Catch.to_JSON(x), catches))
         return jsonify({
                     "status": "success",
                     "catches": catches_id,

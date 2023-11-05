@@ -6,9 +6,11 @@ import dev_fish from '../assets/dev_fish.jpg';
 import { FaCircleUser } from 'react-icons/fa6';
 import '../styles/user.scss'
 import axios from 'axios';
+import { set } from 'immutable';
 
 function User() {
-	const [userData, setUserData] = useState(null);
+	const [userData, setUserData] = useState({});
+	const [loading, setLoading] = useState(true);
 	const [catchData, setCatchData] = useState([]);
 
 	useEffect(() => {
@@ -16,21 +18,35 @@ function User() {
 			try {
 				const { data } = await axios.post("http://localhost:8000/user_api/get_user", {uid: "g8Vs7pZe2GgnKqPmEIIv00hxus93"});
 
-				setUserData(data);
-
-				if(userData && userData.catches) {
-					const catchData = userData.catches.map((catchData) => {
-						return <CatchDex key={catchData.cid} {...catchData} />;
+				
+				if(data || data.catches) {
+					const catchData = data.catches.map((catchData) => {
+						return <CatchDex key={catchData} {...catchData} />;
 					});
 					
 					setCatchData(catchData);
 				}
+				
+				setUserData(data);
+				if(!userData) throw "User not found"
+				
+				setLoading(false);
 			} catch(e) {
-				console.log(e.message);
+				console.log(e ?? e.message);
 			}
 		};
 		fetchData();
 	}, []);
+
+	if(loading) {
+		return (
+			<div className='content-container user'>
+				<div className='user'>
+					<div>Loading...</div>
+				</div>
+			</div>
+		);
+	}
 	
   	return (
 		<div className='content-container user'>

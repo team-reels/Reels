@@ -27,21 +27,20 @@ function App() {
 
 				<Route path="/add" element={<Add />} />
 
-				<Route path="/catch" element={<Catch />} />
+                <Route path="/c/:cid" element={<Catch />} />
 
-				<Route path="/signin" element={<CounterProtected />}>
-					<Route path="/signin" element={<Signin />} />
-				</Route>
-				<Route path="/signup" element={<CounterProtected />}>
-					<Route path="/signup" element={<Signup />} />
-				</Route>
-				{/* TODO: LOGOUT */}
-				{/* <Route path='/logout' />  */}
-				<Route path="/forgot" element={<CounterProtected />}>
-					<Route path="/forgot" element={<ForgotPassword />} />
-				</Route>
-
-				<Route path="/resetpassword" element={<CounterProtected />}>
+                <Route path='/signin' element={<CounterProtected />}>
+                    <Route path="/signin" element={<Signin />} />
+                </Route>
+                <Route path='/signup' element={<CounterProtected />}>
+                    <Route path="/signup" element={<Signup />} />
+                </Route>
+                
+                <Route path='/forgot' element={<CounterProtected />}>
+                    <Route path="/forgot" element={<ForgotPassword />} />
+                </Route>
+                
+                <Route path="/resetpassword" element={<CounterProtected />}>
 					<Route path="/resetpassword" element={<ForgotPassword />} />
 				</Route>
 

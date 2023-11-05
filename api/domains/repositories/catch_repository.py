@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
 from domains.models.catch import Catch
 from random import randint
+from sqlalchemy.sql.expression import func
 
 
 class CatchRepository:
@@ -49,6 +50,10 @@ class CatchRepository:
     def get_catches(self, user_id):
         catch = self.session.query(Catch).filter(Catch.user_id == user_id).all()
         return catch
+
+    def get_n_catches(self, n):
+        catches = self.session.query(Catch).order_by(func.random()).limit(n).all()
+        return catches
 
     """
     Description: Adds new Catch object to be persisted

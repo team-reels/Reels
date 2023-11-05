@@ -3,12 +3,14 @@ import { FaCircleUser } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 
 function CatchDex(props) {
-    const { cid, image, species, weight, size, type, likes} = props;
+    const { cid, image_id, species, weight, size, type, likes} = props;
 
     return (
         <div className='catch-dex'>
             <div className='dex-species'>{species}</div>
-            <img src={image} alt='Fish'></img>
+            {   image_id && 
+                <img src={`https://catches.storage.googleapis.com/${image_id}.jpg`} alt='Fish'></img>
+            }
             {/* should we even include the desc? */}
             <div className='dex-desc'>
                 {/* <div className='dex-type'>{type}</div> */}
