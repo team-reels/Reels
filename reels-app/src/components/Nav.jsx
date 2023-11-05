@@ -26,6 +26,7 @@ const { currentUser } = useContext(AuthContext)
 			<div className='right-nav'>
 			<Link to='/add'><FaPlus size={30}/></Link> 
 			<Link to='/user'><FaCircleUser size={30}/></Link>
+			<Link><button>Logout</button></Link>
 			</div>
 
 		</header>
