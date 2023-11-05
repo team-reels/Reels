@@ -20,8 +20,10 @@ function Signin() {
 	};
 	return (
 		<div className='signin-container'>
-		<button className='signin'>Sign In</button>
-		<button className='signup'>Sign Up</button>
+			<div className='signin-signup'>
+				<button className='signin'>Sign In</button>
+				<button className='signup'>Sign Up</button>
+			</div>
 			<form className='signin-form' onSubmit={signIn}>
 				<label>
 					<input className='input' id='email' type='email' placeholder='email' />
@@ -34,7 +36,7 @@ function Signin() {
 					<input type="checkbox" checked={checked} name="remember" onChange={() => setChecked(!checked)}/> Remember me
 					<Link to='/forgot' style={{textAlign:'right', display:'inline-block', float:'right'}}>Forgot Password</Link>
 				</label>
-				<div class="divider">or</div>
+				{/* <div class="divider">or</div> */}
 			</form>
 		</div>
 	);

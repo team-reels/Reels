@@ -59,14 +59,17 @@ form {
     cursor: pointer;
     width: 100%
   }
-  .signin{
-    background-color: $beige;
+  .signin,
+  .signup{
+    background-color: white;
     color: black;
     padding: 14px 20;
     margin: 8px 0;
-    border: none;
+    border: 1px solid lightgray;
     cursor: pointer;
-    width: 25%;
+    width: 200px;
+    display: inline;
+    flex-direction: row;
   }
   .divider {
     font-size: 15px;
