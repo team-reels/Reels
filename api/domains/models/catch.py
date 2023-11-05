@@ -56,3 +56,16 @@ class Catch(Base):
 
     def set_likes(self, likes):
         self.likes = likes
+
+    @staticmethod
+    def to_JSON(catch):
+        return {
+            "cid": catch.id,
+            "uid": catch.user_id,
+            "species": catch.species,
+            "weight": catch.weight,
+            "size": catch.size,
+            "type": catch.type,
+            "likes": catch.likes,
+            "image_id": catch.image_id
+        }
