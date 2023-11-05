@@ -130,3 +130,25 @@ def get_catch():
                     "type": catch.type,
                     "likes": catch.likes
                 })
+
+
+@catch_blueprint.route("/get_catches", methods=["GET"])
+def get_catches():
+    context = request.get_json()
+
+    if context.get("user_id") is None:
+        return jsonify({
+                "status": "failure",
+                "reason": "missing user_id"
+            })
+
+    user_id = context.get("user_id")
+
+    with Session(engine) as session:
+        catch_repository = CatchRepository(session)
+        catches = catch_repository.get_catches(user_id)
+        catches_id = list(map(lambda x: x.id, catches))
+        return jsonify({
+                    "status": "success",
+                    "catches": catches_id,
+                })
