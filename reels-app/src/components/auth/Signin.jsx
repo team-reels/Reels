@@ -20,6 +20,8 @@ function Signin() {
 	};
 	return (
 		<div className='signin-container'>
+		<button className='signin'>Sign In</button>
+		<button className='signup'>Sign Up</button>
 			<form className='signin-form' onSubmit={signIn}>
 				<label>
 					<input className='input' id='email' type='email' placeholder='email' />

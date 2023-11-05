@@ -57,7 +57,16 @@ form {
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 100%;
+    width: 100%
+  }
+  .signin{
+    background-color: $beige;
+    color: black;
+    padding: 14px 20;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 25%;
   }
   .divider {
     font-size: 15px;
