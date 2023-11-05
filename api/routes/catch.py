@@ -37,14 +37,15 @@ def add_catch():
     species = context.get("species")
     weight = context.get("weight")
     size = context.get("weight")
+    image_id = context.get("image_id")
 
     with Session(engine) as session:
         catch_repository = CatchRepository(session)
         new_catch = catch_repository.add_catch(user_id=user_id, species=species,
-                                              weight=weight, size=size)
+                                              weight=weight, size=size, image_id=image_id)
         return jsonify({
                     "status": "success",
-                    "catch id": new_catch.id
+                    "catch_id": new_catch.id,
                 })
 
 @catch_blueprint.route("/edit_catch", methods=["POST"])
@@ -102,6 +103,7 @@ def edit_catch():
                     "status": "success",
                     "catch id": catch.id
                 })
+
 
 @catch_blueprint.route("/get_catch", methods=["GET"])
 def get_catch():
