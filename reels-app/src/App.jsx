@@ -17,23 +17,21 @@ function App() {
         <AuthProvider>
             <Nav />
 
-            <div className='content-container'>
-                <Routes>
-                    <Route path="/" element={<Home />} />
+            <Routes>
+                <Route path="/" element={<Home />} />
 
-                    <Route path="/u/:uid" element={<User />} />
+                <Route path="/u/:uid" element={<User />} />
 
-                    <Route path="/catch" element={<Catch />} />
+                <Route path="/catch" element={<Catch />} />
 
-                    <Route path="/signin" element={<SignIn />} />
-                    <Route path="/signup" element={<SignUp />} />
-                    <Route path="/forgot" element={<ForgotPassword />} />
+                <Route path="/signin" element={<SignIn />} />
+                <Route path="/signup" element={<SignUp />} />
+                <Route path="/forgot" element={<ForgotPassword />} />
 
-                    <Route path="*" element={<Protected />}>
-                        <Route path="*" element={<Home />} />
-                    </Route>
-                </Routes>
-            </div>
+                <Route path="*" element={<Protected />}>
+                    <Route path="*" element={<Home />} />
+                </Route>
+            </Routes>
         </AuthProvider>
     );
 }
