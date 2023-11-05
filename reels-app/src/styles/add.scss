@@ -4,8 +4,10 @@
     width:100%;
     height:auto;
     display:flex;
+    background-color: $beige;
+    font-size: 20px;
 }
-.form-container{
+.form-container-add{
     background-color: $blue-green;
     height:100%;
     width:fit-content;
@@ -15,10 +17,10 @@
     padding: 20px;
     margin-top:40px;
     align-items: right;
+    font-size: 20px;
 
-    label{
+    .label{
         width:fit-content;
-
     }
     .input{
         border: 1px black;

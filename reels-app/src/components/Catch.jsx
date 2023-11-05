@@ -13,24 +13,24 @@ function Catch(props) { // need to receive bio in as well
       <img className='image-class'src={dev_fish} alt='Fish'></img>
 				<form className='form-container'>
 					<label>
-						Species:
+						Species: 
 						{species}
 					</label>
 					<label>
-						Weight:
+						Weight: 
 						{weight}
 					</label>
 					<label>
-						Length:
+						Length: 
 						{size}
 					</label>
-					<label>
+					{/* <label>
 						Bio:
 						<input
 							className="input"
 							id="bio"
 						/>
-					</label>
+					</label> */}
 				</form>
 		</div>
   );
