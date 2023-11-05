@@ -9,7 +9,8 @@ import {
     // GoogleAuthProvider,
     sendPasswordResetEmail,
     EmailAuthProvider,
-    reauthenticateWithCredential
+    reauthenticateWithCredential,
+    confirmPasswordReset
   } from 'firebase/auth';
 
 const signup = async (email, username, password) => { //create
@@ -48,4 +49,8 @@ const logout = async () => { //delete
     await signOut(auth);
 }
 
-export { signup, signin, logout, changepassword, resetpassword }
+const resetPassword = async (newPass, oob) => {
+    await confirmPasswordReset(oob, newPass);
+}
+
+export { resetPassword, signup, signin, logout, changepassword, resetpassword }
