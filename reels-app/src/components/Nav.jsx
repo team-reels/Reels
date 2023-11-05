@@ -12,7 +12,7 @@ function App() {
             <h1>Reels</h1> {/* replace with svg? */}
         </Link>
         <Link to='/user'>
-            <FaCircleUser size={45}/>
+            <FaCircleUser size={30}/>
         </Link>
     </header>
   );
