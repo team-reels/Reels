@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import Home from './components/Home';
@@ -10,10 +10,16 @@ import CounterProtected from './components/middleware/CounterProtected';
 import Signin from './components/auth/Signin';
 import Signup from './components/auth/Signup';
 import ForgotPassword from './components/auth/ForgotPassword';
-
+import { fun } from './api/user.js';
 import './App.scss';
 
 function App() {
+    useEffect(() => {
+        fun().then((data) => {
+            console.log('done', data);
+        })
+    }, []);
+
     return (
         <AuthProvider>
             <Nav />
