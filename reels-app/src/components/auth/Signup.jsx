@@ -14,8 +14,8 @@ function SignUp() {
 	};
 
 	return (
-		<div className="signin-container">
-			<div className="signin-signup">
+		<div className="auth-container">
+			<div className="auth-signup">
 				<Link to="/signin">
 					<button className="signin">Sign In</button>
 				</Link>
@@ -23,7 +23,7 @@ function SignUp() {
 					<button className="signup">Sign Up</button>
 				</Link>
 			</div>
-			<form className="signin-form" onSubmit={signup}>
+			<form className="auth-form" onSubmit={signup}>
 				<label>
 					<input
 						className="input"

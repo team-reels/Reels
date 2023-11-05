@@ -20,8 +20,8 @@ function Signin() {
 		signin(email, password);
 	};
 	return (
-		<div className="signin-container">
-			<div className="signin-signup">
+		<div className="auth-container">
+			<div className="auth-signup">
 				<Link to="/signin">
 					<button className="signin">Sign In</button>
 				</Link>
@@ -29,7 +29,7 @@ function Signin() {
 					<button className="signup">Sign Up</button>
 				</Link>
 			</div>
-			<form className="signin-form" onSubmit={signIn}>
+			<form className="auth-form" onSubmit={signIn}>
 				<label>
 					<input
 						className="input"
