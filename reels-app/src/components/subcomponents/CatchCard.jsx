@@ -5,9 +5,8 @@ import { useNavigate } from 'react-router';
 
 function CatchCard(props) {
     // PROBLEM: we don't have liked array for users. how to tell when user liked? fully client side. need likes to be stateful
-    const { uid, image_id, species, weight, size, type, likes } = props;
+    const { uid, username, image_id, species, weight, size, type, likes } = props;
     const navigate = useNavigate();
-    console.log(image_id)
 
     return (
         <div className='catch-card'>
@@ -17,6 +16,7 @@ function CatchCard(props) {
             <div className='card-desc'>
                 {/* <div className='card-type'>{type}</div> */}
                 <div className='card-icons'>
+                    {/* {username} */}
                     <FaCircleUser size={45} onClick={() => navigate(`/u/${uid}`)}/>
                     
                     {/*

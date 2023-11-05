@@ -5,8 +5,7 @@ import axios from 'axios';
 import '../styles/catch.scss';
 
 
-function Catch(props) { // need to receive bio in as well
-  	const { image, species, weight, size, type, likes } = props;
+function Catch() { // need to receive bio in as well
 	const [catchData, setCatchData] = useState(null);
 	const params = useParams();
 	const cid = params.cid;

@@ -5,8 +5,8 @@ import CatchDex from './subcomponents/CatchDex';
 import dev_fish from '../assets/dev_fish.jpg';
 import { FaCircleUser } from 'react-icons/fa6';
 import '../styles/user.scss'
+import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
-import { set } from 'immutable';
 
 function User() {
 	const { currentUser } = useContext(AuthContext);
@@ -22,7 +22,7 @@ function User() {
 				
 				if(data || data.catches) {
 					const catchData = data.catches.map((catchData) => {
-						return <CatchDex key={catchData} {...catchData} />;
+						return <CatchDex key={uuidv4()} {...catchData} />;
 					});
 					
 					setCatchData(catchData);

@@ -4,6 +4,7 @@ import { AuthContext } from '../contexts/AuthContext';
 import dev_fish from '../assets/dev_fish.jpg';
 import '../styles/home.scss';
 import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
 
 function Home() {
 	const [loading, setLoading] = useState(true);
@@ -22,7 +23,8 @@ function Home() {
 				}
 
 				const catchList = await Promise.all(data.catches.map(async (fish) => {
-					return <CatchCard key={fish.cid} cid={fish.cid} {...fish}/>;
+					// const { data } = await axios.post("http://localhost:8000/user_api/get_user", {uid: fish.uid});
+					return <CatchCard key={uuidv4()} cid={fish.cid} {...fish}/>;
 				}));
 
 				setCatchData(catchList);

@@ -8,9 +8,11 @@ function CatchDex(props) {
     return (
         <div className='catch-dex'>
             <div className='dex-species'>{species}</div>
+            {/* <Link to={`/c/${cid}`}> */}
             {   image_id && 
                 <img src={`https://catches.storage.googleapis.com/${image_id}.jpg`} alt='Fish'></img>
             }
+            {/* </Link> */}
             {/* should we even include the desc? */}
             <div className='dex-desc'>
                 {/* <div className='dex-type'>{type}</div> */}

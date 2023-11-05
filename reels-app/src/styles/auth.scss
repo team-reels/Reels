@@ -24,6 +24,10 @@
 		> :not(:first-child) {
 			margin-top: 20px;
 		}
+
+		label {
+			color: black;
+		}
 	}
 }
 
