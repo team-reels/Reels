@@ -1,14 +1,16 @@
 import { useState } from 'react';
 import dev_fish from '../assets/dev_fish.jpg';
+import '../styles/catch.scss';
 
 
-function Catch() {
-  const image={dev_fish}, species='fish', weight=5, size=5, type='fish', likes=5;
+function Catch(props) { // need to receive bio in as well
+  let { image, species, weight, size, type, likes } = props;
+  species='fish', weight=5, size=5, type='fish', likes=5;
   const [count, setCount] = useState(0);
 
   return (
 		<div className='add-container'>
-      <img src={image} alt='Fish'></img>
+      <img className='image-class'src={dev_fish} alt='Fish'></img>
 				<form className='form-container'>
 					<label>
 						Species:
