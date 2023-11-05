@@ -21,8 +21,10 @@ const { currentUser } = useContext(AuthContext)
 				</div>
 				: <Link to='/user'><FaCircleUser size={30}/></Link>
 			} */}
+			<div className='right-nav'>
+			<Link to='/add'><FaPlus size={30}/></Link> 
 			<Link to='/user'><FaCircleUser size={30}/></Link>
-
+			</div>
 
 		</header>
 	);
