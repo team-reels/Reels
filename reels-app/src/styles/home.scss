@@ -1,0 +1,27 @@
+@import '../utils/theme.scss';
+
+.content-container {
+    grid-template-columns: [spacer] 25% [content] 50% [spacer] 25%;
+}
+
+.home {
+    grid-area: content;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.catch-card {
+    background-color: $tiffany-blue;
+    height: 600px;  
+    width: 100%;
+    padding: 25px;  
+    margin-top: 25px;
+    > img {
+        width: 60%;
+        object-fit: contain;
+    }
+}
