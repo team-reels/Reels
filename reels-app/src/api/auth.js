@@ -5,8 +5,6 @@ import {
     updateProfile,
     signInWithEmailAndPassword,
     updatePassword,
-    // signInWithPopup,
-    // GoogleAuthProvider,
     sendPasswordResetEmail,
     EmailAuthProvider,
     reauthenticateWithCredential,

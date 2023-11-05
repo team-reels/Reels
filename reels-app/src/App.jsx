@@ -8,9 +8,11 @@ import User from "./components/User";
 import Catch from "./components/Catch";
 import Protected from "./components/middleware/Protected";
 import CounterProtected from "./components/middleware/CounterProtected";
+import ResetProtected from "./components/middleware/ResetProtected";
 import Signin from "./components/auth/Signin";
 import Signup from "./components/auth/Signup";
 import ForgotPassword from "./components/auth/ForgotPassword";
+import ResetPassword from "./components/auth/ResetPassword";
 import "./App.scss";
 
 function App() {
@@ -39,9 +41,10 @@ function App() {
                 <Route path='/forgot' element={<CounterProtected />}>
                     <Route path="/forgot" element={<ForgotPassword />} />
                 </Route>
-                
-                <Route path="/resetpassword" element={<CounterProtected />}>
-					<Route path="/resetpassword" element={<ForgotPassword />} />
+
+                {/* NOTE: you should not be able to reach this without having visited the reset pw link */}
+                <Route path="/resetpassword" element={<ResetProtected />}>
+					<Route path="/resetpassword" element={<ResetPassword />} />
 				</Route>
 
 				<Route path="*" element={<Protected />}>
