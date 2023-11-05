@@ -1,6 +1,6 @@
 @import '../utils/theme.scss';
 
-.content-container {
+.content-container.home {
     grid-template-columns: [l] 30% [c] 40% [r] 30%;
 }
 
