@@ -8,9 +8,8 @@ from sqlalchemy.dialects.postgresql import UUID
 class User(Base):
     __tablename__ = "users"
 
-    id: Mapped[UUID] = mapped_column(UUID(as_uuid=True),
-                                 primary_key=True,
-                                 default=uuid4)
+    id: Mapped[str] = mapped_column(String(64),
+                                 primary_key=True)
 
     username: Mapped[str] = mapped_column(String(64),
                                           nullable=False,

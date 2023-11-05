@@ -3,7 +3,7 @@ import { FaCircleUser } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 function CatchDex(props) {
-	const { id, image, species, weight, size, type, likes } = props;
+    const { cid, image, species, weight, size, type, likes} = props;
 
 	return (
 		<div className="catch-dex">

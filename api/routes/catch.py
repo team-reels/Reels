@@ -2,15 +2,17 @@ from flask import Blueprint, jsonify, request
 from domains.repositories.catch_repository import CatchRepository
 from engine import engine
 from sqlalchemy.orm import Session
+from flask_cors import CORS
 
 catch_blueprint = Blueprint('catches', __name__, url_prefix="/catch_api")
+CORS(catch_blueprint)
 
 
 @catch_blueprint.route("/add_catch", methods=["POST"])
 def add_catch():
     context = request.get_json()
 
-    if context.get("user_id") is None:
+    if context.get("uid") is None:
         return jsonify({
                 "status": "failure", "reason": "missing user_id"
             })
@@ -33,7 +35,7 @@ def add_catch():
                 "reason": "missing size"
             })
 
-    user_id = context.get("user_id")
+    uid = context.get("uid")
     species = context.get("species")
     weight = context.get("weight")
     size = context.get("weight")
@@ -41,7 +43,7 @@ def add_catch():
 
     with Session(engine) as session:
         catch_repository = CatchRepository(session)
-        new_catch = catch_repository.add_catch(user_id=user_id, species=species,
+        new_catch = catch_repository.add_catch(user_id=uid, species=species,
                                               weight=weight, size=size, image_id=image_id)
         return jsonify({
                     "status": "success",
@@ -52,12 +54,12 @@ def add_catch():
 def edit_catch():
     context = request.get_json()
 
-    if context.get("id") is None:
+    if context.get("cid") is None:
         return jsonify({
                 "status": "failure", "reason": "missing id"
             })
 
-    if context.get("user_id") is None:
+    if context.get("uid") is None:
         return jsonify({
                 "status": "failure", "reason": "missing user_id"
             })
@@ -80,8 +82,8 @@ def edit_catch():
                 "reason": "missing size"
             })
 
-    id = context.get("id")
-    user_id = context.get("user_id")
+    id = context.get("cid")
+    user_id = context.get("uid")
     species = context.get("species")
     weight = context.get("weight")
     size = context.get("size")
@@ -105,11 +107,11 @@ def edit_catch():
                 })
 
 
-@catch_blueprint.route("/get_catch", methods=["GET"])
+@catch_blueprint.route("/get_catch", methods=["POSt"])
 def get_catch():
     context = request.get_json()
 
-    if context.get("id") is None:
+    if context.get("cid") is None:
         return jsonify({
                 "status": "failure",
                 "reason": "missing id"
@@ -122,8 +124,8 @@ def get_catch():
         catch = catch_repository.get_catch(id)
         return jsonify({
                     "status": "success",
-                    "catch id": catch.id,
-                    "user id": catch.user_id,
+                    "cid": catch.id,
+                    "uid": catch.user_id,
                     "species": catch.species,
                     "weight": catch.weight,
                     "size": catch.size,
@@ -132,17 +134,17 @@ def get_catch():
                 })
 
 
-@catch_blueprint.route("/get_catches", methods=["GET"])
+@catch_blueprint.route("/get_catches", methods=["POST"])
 def get_catches():
     context = request.get_json()
 
-    if context.get("user_id") is None:
+    if context.get("uid") is None:
         return jsonify({
                 "status": "failure",
-                "reason": "missing user_id"
+                "reason": "missing uid"
             })
 
-    user_id = context.get("user_id")
+    user_id = context.get("uid")
 
     with Session(engine) as session:
         catch_repository = CatchRepository(session)

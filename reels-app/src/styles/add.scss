@@ -1,41 +1,41 @@
 @import '../utils/theme.scss';
 
-.catch-container{
+.add-container{
     width:100%;
-    height:auto;
+    height:100%;
     display:flex;
+    flex-direction: row;
     background-color: $blue-green;
-    justify-content: space-around;
+    font-size: 30px;
     align-items: center;
+    justify-content: space-around;
     font-family: monospace;
-
-    .image-class{
-        width: 50%;
-        height: auto;
-        overflow: hidden;
-        margin: 20px;
+    
+    .add-pic{
+        // margin-left:100px;
     }
 }
-.form-container{
+.form-container-add{
     background-color: $blue-green;
-    height:100%;
+    height:auto;
     width:fit-content;
     display: flex;
     flex-direction: column;
-
     // margin-left: 200px;
-    padding: 20px;
+    // padding: 20px;
     // margin-top:40px;
-    align-items: right;
-    font-size: 40px;
+    align-items: center;
+    font-size: 30px;
 
-    label{
+
+    .add-label{
         width:fit-content;
+        margin-left: 20px;
 
     }
     .input{
-        border: 1px black;
+        // border: 1px black;
         margin: 20px;
-        width: 50%;
+        width: 50%; 
     }
 }

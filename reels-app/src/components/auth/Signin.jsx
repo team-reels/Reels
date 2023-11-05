@@ -1,28 +1,31 @@
 import { useEffect, useState } from "react";
 import { signin } from "../../api/auth.js";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../../styles/auth.scss";
 
 function Signin() {
 	const [checked, setChecked] = useState(false);
+	const [error, setError] = useState('');
 	const [forgot, setForgot] = useState(false);
+	const navigate = useNavigate();
 
-	useEffect(() => {
-		console.log(checked);
-	}, [checked]);
-
-	const signIn = (e) => {
+	const doSignIn = async (e) => {
 		e.preventDefault();
 		const email = document.getElementById("email").value;
 		const password = document.getElementById("password").value;
-		// continue with signin code here (import from api/auth.js and run code)
-		// navigate to '/'
-		signin(email, password);
+		try {
+			// TODO: VALIDATION
+			await signin(email, password);
+			navigate('/');
+		} catch (e) {
+			console.log(`Error: ${e.message}`);
+			setError(e.message);
+		}
 	};
 	return (
 		<div className='content-container auth'>
 			<div className="auth-container">
-				<div className="auth-signup">
+				<div className="auth-buttons">
 					<Link to="/signin">
 						<button className="signin">Sign In</button>
 					</Link>
@@ -30,7 +33,7 @@ function Signin() {
 						<button className="signup">Sign Up</button>
 					</Link>
 				</div>
-				<form className="auth-form" onSubmit={signIn}>
+				<form className="auth-form" onSubmit={doSignIn}>
 					<label>
 						<input
 							className="input"
@@ -47,6 +50,9 @@ function Signin() {
 							placeholder="password"
 						/>
 					</label>
+					{	error && 
+						<span className="input-error">{error}</span>
+					}
 					<button className="login-button" type="submit">
 						Login
 					</button>

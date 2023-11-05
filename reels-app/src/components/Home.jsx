@@ -8,13 +8,15 @@ function Home() {
 	const [catchData, setCatchData] = useState([]);
 
 	useEffect(() => {
+		// paginate 10 per
+		
 		// gather catch data , set state
 		const data = [
 			//  species, weight, size, type, likes 
-			<CatchCard key='1' id='1' image={dev_fish} species='fish' weight={5} size={5} type='fish' likes={5}></CatchCard>,
-			<CatchCard key='2' id='2' image={dev_fish} species='bish' weight={5} size={5} type='fish' likes={5}></CatchCard>,
-			<CatchCard key='3' id='3' image={dev_fish} species='dish' weight={5} size={5} type='fish' likes={5}></CatchCard>,
-			<CatchCard key='4' id='4' image={dev_fish} species='kish' weight={5} size={5} type='fish' likes={5}></CatchCard>
+			<CatchCard key='1' cid='1' image={dev_fish} species='fish' weight={5} size={5} type='fish' likes={5}></CatchCard>,
+			<CatchCard key='2' cid='2' image={dev_fish} species='bish' weight={5} size={5} type='fish' likes={5}></CatchCard>,
+			<CatchCard key='3' cid='3' image={dev_fish} species='dish' weight={5} size={5} type='fish' likes={5}></CatchCard>,
+			<CatchCard key='4' cid='4' image={dev_fish} species='kish' weight={5} size={5} type='fish' likes={5}></CatchCard>
 		];
 		setCatchData(data);
 
