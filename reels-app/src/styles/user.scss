@@ -12,3 +12,57 @@
     flex-direction: column;
     justify-content: center;
 }
+
+// if we want to add loadout, wrap in container
+.user-profile {
+    > div {
+        width: 40%;
+        text-align: center;
+    }
+    .user-follows {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 25px;
+}
+
+// catchdex
+
+.user-catches {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-top: 25px;
+}
+
+// do what you will with the formatting of this.
+// i think it'd look good like this OR only as images. unless there's
+// a better way to display the text info
+.catch-dex {
+    display: inline-flex;
+    flex-direction: column;
+    border-radius: 15px;
+    width: 32%;
+    margin-bottom: 2%;
+    background-color: $beige;
+    color: black;
+    > img {
+        width: 100%;
+    }
+
+    .dex-species {
+        text-align: center;
+    }
+    .dex-specs {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around   ;
+    }
+}

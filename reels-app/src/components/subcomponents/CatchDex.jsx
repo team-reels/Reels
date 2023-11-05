@@ -7,14 +7,17 @@ function CatchDex(props) {
 
     return (
         <div className='catch-dex'>
+            <div className='dex-species'>{species}</div>
             <img src={image} alt='Fish'></img>
+            {/* should we even include the desc? */}
             <div className='dex-desc'>
                 {/* <div className='dex-type'>{type}</div> */}
                 <div className='dex-info'>
-                    <div className='dex-species'>Species: {species}</div>
+                    <div className='dex-specs'>
+                        <span>{weight} Ibs</span>
+                        <span>{size} In</span>
+                    </div>
                     {/* svg? */}
-                    <div className='dex-weight'>Weight: {weight}</div>
-                    <div className='dex-size'>Length: {size}</div>
                 </div>
             </div>
         </div>

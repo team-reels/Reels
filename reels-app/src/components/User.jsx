@@ -18,7 +18,7 @@ function User() {
 		username: 'bob delor',
 		following: 14,
 		followers: 56,
-		bio: 'pppoopoo lorem ipsum cringe dolor pp pdwmdajowdawjdwadjawdnawjkdnawjk dnwajkdwna',
+		bio: 'bio pppoopoo lorem ipsum cringe dolor pp pdwmda jowdawj dwadja wdnawjkdnawjk dnwajkdwna', //bio char limit 140
 		catches: [
 			{
 				id: '1',
@@ -72,6 +72,7 @@ function User() {
   	return (
 		<div className='content-container user'>
 			<div className='user'>
+				{/* if we add loadout, wrap in another container */}
 				<div className='user-profile'>
 					<div className='user-image'>
 						
@@ -81,8 +82,14 @@ function User() {
 					</div>
 					<div className='user-info'>
 						<div className='user-name'>{userData.username}</div>
-						<div className='user-following'>Following: {userData.following}</div>
-						<div className='user-followers'>Followers: {userData.followers}</div>
+						<div className='user-follows'>
+							<span>
+								Following: {userData.following}
+							</span>
+							<span>
+								Followers: {userData.followers}
+							</span>
+						</div>
 					</div>
 					<div className='user-bio'>
 						{userData.bio}
