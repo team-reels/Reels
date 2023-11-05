@@ -40,18 +40,21 @@ def add_user():
 def get_user():
     context = request.get_json()
 
-    if context.get("id") is None:
+    if context.get("uid") is None:
         return jsonify({
                 "status": "failure",
                 "reason": "missing id"
             })
 
+    uid = context.get("uid")
     with Session(engine) as session:
         user_repository = UserRepository(session)
-        user = user_repository.get(id)
-        return jsonify({
+        user = user_repository.get(uid)
+        response = jsonify({
                     "status": "success",
                     "user id": user.id,
                     "username": user.username,
                     "biography": user.biography
                 })
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        return response
