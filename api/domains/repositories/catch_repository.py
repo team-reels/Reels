@@ -41,6 +41,14 @@ class CatchRepository:
     def get_catch(self, id):
         catch = self.session.get(Catch, id)
         return catch
+    """
+    Description: Gets an all catches for a user
+    Arguments: user_id: uuid of user
+    Returns: Catches: List[Catch] catches obtained from persisted data
+    """
+    def get_catches(self, user_id):
+        catch = self.session.query(Catch).filter(Catch.user_id == user_id).all()
+        return catch
 
     """
     Description: Adds new Catch object to be persisted
