@@ -44,7 +44,7 @@ def add_user():
             })
 
 
-@user_blueprint.route("/get_user", methods=["GET"])
+@user_blueprint.route("/get_user", methods=["GET", "OPTIONS"])
 def get_user():
     context = request.get_json()
 
@@ -66,3 +66,7 @@ def get_user():
                 })
         response.headers.add('Access-Control-Allow-Origin', '*')
         return response
+
+@user_blueprint.route("/test")
+def test():
+  return "Hello, cross-origin-world!"
