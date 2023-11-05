@@ -1,7 +1,7 @@
 @import '../utils/theme.scss';
 
 .content-container {
-    grid-template-columns: [spacer] 25% [content] 50% [spacer] 25%;
+    grid-template-columns: [spacer] 30% [content] 40% [spacer] 30%;
 }
 
 .home {
@@ -16,12 +16,35 @@
 
 .catch-card {
     background-color: $tiffany-blue;
-    height: 600px;  
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 500px;  
     width: 100%;
     padding: 25px;  
     margin-top: 25px;
     > img {
-        width: 60%;
+        width: 100%;
         object-fit: contain;
+    }
+    > .card-desc {
+        width: 100%;
+
+        > div {
+            display: inline-block;
+        }
+
+        .card-user {
+            width: 10%;
+        }
+        .card-info {
+            width: 70%;
+            display: inline-flex;
+            flex-direction: column;
+        }
+        .card-icons {
+            width: 20%;
+        }
     }
 }
