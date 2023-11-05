@@ -10,23 +10,25 @@ function Add() {
 
   	return (
 		<div className='add-container'>
-				<FaSquarePlus size={500} value={{width:'auto'}} onClick={()=>console.log('complete add pic')}/>
+				<div className='add-pic'>
+				<FaSquarePlus size={300} value={{width:'auto'}} onClick={()=>console.log('complete add pic')}/>
+				</div>
 				<form className='form-container-add'>
-					<label>
+					<label className='add-label'>
 						Species:
 						<input
 							className="input"
 							id="species"
 						/>
 					</label>
-					<label>
+					<label className='add-label'>
 						Weight:
 						<input
 							className="input"
 							id="length"
 						/>
 					</label>
-					<label>
+					<label className='add-label'>
 						Length:
 						<input
 							className="input"
