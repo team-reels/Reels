@@ -42,7 +42,7 @@ def add_comment():
                     "id": new_comment.id
                 })
 
-@comment_blueprint.route("/get_comment", methods=["GET"])
+@comment_blueprint.route("/get_comment", methods=["POST"])
 def get_comment():
     context = request.get_json()
 

@@ -107,7 +107,7 @@ def edit_catch():
                 })
 
 
-@catch_blueprint.route("/get_catch", methods=["GET"])
+@catch_blueprint.route("/get_catch", methods=["POSt"])
 def get_catch():
     context = request.get_json()
 
@@ -134,7 +134,7 @@ def get_catch():
                 })
 
 
-@catch_blueprint.route("/get_catches", methods=["GET"])
+@catch_blueprint.route("/get_catches", methods=["POST"])
 def get_catches():
     context = request.get_json()
 
