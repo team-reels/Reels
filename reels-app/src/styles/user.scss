@@ -74,21 +74,25 @@
 .catch-dex {
     display: inline-flex;
     flex-direction: column;
-    border-radius: 15px;
+    border-radius: 0px;
     width: 32%;
     margin-bottom: 2%;
-    background-color: $beige;
-    color: black;
+    border-top: 2px solid gray;
+    border-bottom: 2px solid gray;
+    border-radius: 5%;
+    color: white;
     > img {
         width: 100%;
     }
 
     .dex-species {
-        text-align: center;
+        text-align: left;
+        padding-left: 10px;
+        font-size: 1.2em;
     }
     .dex-specs {
         display: flex;
         flex-direction: row;
-        justify-content: space-around   ;
+        justify-content: space-around;
     }
 }

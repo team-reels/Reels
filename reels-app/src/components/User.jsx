@@ -33,10 +33,10 @@ function User() {
 			{
 				id: "2",
 				image: dev_fish,
-				species: "fish",
-				weight: 5,
-				size: 5,
-				type: "fish",
+				species: "dog",
+				weight: 24,
+				size: 58,
+				type: "dog",
 				likes: 5,
 			},
 			{
