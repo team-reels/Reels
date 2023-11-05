@@ -2,7 +2,7 @@
 //wrapper for bio and dex + other functions
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
-import { FaRegHeart, FaCircleUser, FaRegShareFromSquare } from 'react-icons/fa6';
+import { FaRegHeart, FaCircleUser, FaRegShareFromSquare} from 'react-icons/fa6';
 import dev_fish from '../../assets/dev_fish.jpg';
 
 function CatchCard(props) {
@@ -24,7 +24,18 @@ function CatchCard(props) {
                 {/* <div className='card-type'>{type}</div> */}
                 <div className='card-icons'>
                     <FaCircleUser size={45}/>
-                    <div className='card-likes'>
+                    
+                    {/*
+                      * If user is logged in and has liked this post, .card-liked;
+                      * otherwise, .card-unliked:
+                      * 1. check if user has liked this post (grab the liked array from db and compare username/id)
+                      * 2. change class according using ternary
+                      * 
+                      * ex: isLiked() -> boolean
+                      * - will return true if the user has liked the post
+                      * - otherwise, returns false
+                      */}
+                    <div className={'card-likes'}>
                         {/* likes */}
                         <FaRegHeart size={25}/>
                         {likes}
@@ -33,6 +44,9 @@ function CatchCard(props) {
                         {/* creates a link */}
                         <FaRegShareFromSquare size={25}/>
                     </div>
+                    {/* <div className='card-etc'>
+                        <BsThreeDots size={25}/>
+                    </div> */}
                 </div>
                 <div className='card-info'>
                     <div className='card-species'>Species: {species}</div>
