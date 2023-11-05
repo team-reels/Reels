@@ -22,7 +22,7 @@ function Signin() {
 	return (
 		<div className='content-container auth'>
 			<div className="auth-container">
-				<div className="auth-signup">
+				<div className="auth-buttons">
 					<Link to="/signin">
 						<button className="signin">Sign In</button>
 					</Link>
