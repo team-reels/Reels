@@ -13,10 +13,10 @@ class Comment(Base):
                                  primary_key=True,
                                  default=uuid4)
 
-    catch_id: Mapped[UUID] = mapped_column(ForeignKey("catch.id"),
+    catch_id: Mapped[UUID] = mapped_column(ForeignKey("catches.id"),
                                             nullable=False)
 
-    user_id: Mapped[UUID] = mapped_column(ForeignKey("user.id"),
+    user_id: Mapped[UUID] = mapped_column(ForeignKey("users.id"),
                                             nullable=False)
 
     comment: Mapped[str] = mapped_column(String(512),

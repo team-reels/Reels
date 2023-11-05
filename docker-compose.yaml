@@ -32,13 +32,26 @@ services:
         DB_NAME: "reels"
       networks:
          - db-subnet 
+         - api-subnet 
+      ports:
+        - "8000:8000"
+      restart: unless-stopped
+  vite:
+      build:
+        context: .
+        dockerfile: ./reels-app/reels.dockerfile
+      image: "reels-web"
+      container_name: "reels-web"
+      networks:
+        - api-subnet
       ports:
         - "5050:5050"
       restart: unless-stopped
+
 volumes:
   reels:
     external: true
 networks:
   db-subnet:
     internal: true
-
+  api-subnet:

@@ -1,4 +1,7 @@
 from sqlalchemy import create_engine
+from domains.models.comment import Comment
+from domains.models.user import User
+from domains.models.catch import Catch
 from domains.models.base import Base
 from config import *
 

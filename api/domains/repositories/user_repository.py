@@ -1,8 +1,9 @@
 from sqlalchemy.orm import Session
 from domains.models.user import User
+from domains.repositories.repo_exceptions import *
 
 
-def UserRepository():
+class UserRepository:
     db_session: Session
 
     def __init__(self, db_session: Session):
@@ -24,8 +25,10 @@ def UserRepository():
     Returns: User: User of added user data
     """
     def add_user(self, username):
+        if len(self.session.query(User).filter(User.username == username).all()) > 0:
+            raise UsernameExistsException
         new_user = User(username=username)
-        return _add_user(new_user)
+        return self._add_user(new_user)
 
     """
     Description: Gets an existing User

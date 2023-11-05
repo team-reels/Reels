@@ -1,2 +1,8 @@
 @import 'utils/theme.scss'; 
 
+// grid formats for each route
+.content-container {
+	width: 100%;
+	display: grid;
+}
+
