@@ -17,8 +17,9 @@ function User() {
 				const { data } = await axios.post("http://localhost:8000/user_api/get_user", {uid: "g8Vs7pZe2GgnKqPmEIIv00hxus93"});
 
 				setUserData(data);
+				if(!userData) throw "User not found"
 
-				if(userData && userData.catches) {
+				if(userData.catches) {
 					const catchData = userData.catches.map((catchData) => {
 						return <CatchDex key={catchData.cid} {...catchData} />;
 					});
