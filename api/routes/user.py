@@ -3,8 +3,10 @@ from domains.repositories.user_repository import UserRepository
 from engine import engine
 from sqlalchemy.orm import Session
 from domains.repositories.repo_exceptions import *
+from flask_cors import CORS
 
 user_blueprint = Blueprint('user_api', __name__, url_prefix="/user_api")
+CORS(user_blueprint)
 
 
 @user_blueprint.route("/add_user", methods=["POST"])

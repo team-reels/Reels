@@ -2,8 +2,10 @@ from flask import Blueprint, jsonify, request
 from domains.repositories.catch_repository import CatchRepository
 from engine import engine
 from sqlalchemy.orm import Session
+from flask_cors import CORS
 
 catch_blueprint = Blueprint('catches', __name__, url_prefix="/catch_api")
+CORS(catch_blueprint)
 
 
 @catch_blueprint.route("/add_catch", methods=["POST"])
