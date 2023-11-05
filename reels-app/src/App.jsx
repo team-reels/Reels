@@ -26,6 +26,8 @@ function App() {
 
                 <Route path="/u/:uid" element={<User />} />
 
+                <Route path='/add' element={<Add />} />
+
                 <Route path="/catch" element={<Catch />} />
 
                 <Route path='/signin' element={<CounterProtected />}>
