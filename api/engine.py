@@ -61,6 +61,16 @@ if RESET_DB:
         catch3.likes = 2
         catch3.image_id = "a091832098123"
         session.add(catch3)
+
+        catch4 = Catch()
+        catch4.user_id = user2.id
+        catch4.species = "fish"
+        catch4.weight = 1.3
+        catch4.size = 1.2
+        catch4.type = 1
+        catch4.likes = 9
+        catch4.image_id = "lkasdjflasjdlkjalsdf"
+        session.add(catch4)
         session.commit()
 
         comment1 = Comment()
@@ -80,5 +90,29 @@ if RESET_DB:
         comment3.catch_id = str(catch3.id)
         comment3.comment = "damn"
         session.add(comment3)
+
+        comment4 = Comment()
+        comment4.user_id = str(user2.id)
+        comment4.catch_id = str(catch3.id)
+        comment4.comment = "yooo"
+        session.add(comment4)
+
+        comment5 = Comment()
+        comment5.user_id = str(user1.id)
+        comment5.catch_id = str(catch2.id)
+        comment5.comment = "lmao"
+        session.add(comment5)
+
+        comment6 = Comment()
+        comment6.user_id = str(user1.id)
+        comment6.catch_id = str(catch4.id)
+        comment6.comment = "xD"
+        session.add(comment6)
+
+        comment7 = Comment()
+        comment7.user_id = str(user2.id)
+        comment7.catch_id = str(catch4.id)
+        comment7.comment = "oof"
+        session.add(comment7)
 
         session.commit()
