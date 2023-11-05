@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
-import { AuthContext } from '../contexts/AuthContext';
+import { AuthContext } from '../../contexts/AuthContext';
 
 /** Protected route wrapper
  *  If authorized, return an outlet that will render child elements

@@ -27,8 +27,6 @@ class UserRepository:
     def add_user(self, id, username):
         if len(self.session.query(User).filter(User.username == username).all()) > 0:
             raise UsernameExistsException
-        if len(self.session.query(User).filter(User.id == id).all()) > 0:
-            raise IdExistsException 
         new_user = User(id=id, username=username)
         return self._add_user(new_user)
 

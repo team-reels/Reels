@@ -7,34 +7,23 @@
 	background-color: $beige;
 }
 
-.auth-container {
+.auth-container, .forgot-container {
 	grid-column: c;
 	grid-row: m;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-}
 
-.auth-form {
-	width: 75%;
-	padding: 20px;
-	display: flex;
-	flex-direction: column;
-
-	> :not(:first-child) {
-		margin-top: 20px;
-	}
-}
-
-.forgot-form {
-	width: 30%;
-	padding: 20px;
-	display: flex;
-	flex-direction: column;
-
-	> :not(:first-child) {
-		margin-top: 20px;
+	.auth-form, .forgot-form {
+		width: 75%;
+		padding: 20px;
+		display: flex;
+		flex-direction: column;
+	
+		> :not(:first-child) {
+			margin-top: 20px;
+		}
 	}
 }
 
@@ -49,17 +38,6 @@
 .checkbox{
     float: left;
 }
-  
-/* Set a style for all buttons */
-button {
-    background-color: black;
-    color: $blue-green;
-    padding: 14px 20;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-}
 
 .login-button {
 	background-color: #04AA6D;
@@ -70,23 +48,24 @@ button {
 	cursor: pointer;
 	width: 100%
 }
-.signin,
-.signup{
-	background-color: white;
-	color: black;
-	padding: 14px 20;
-	margin: 8px 0;
-	border: 1px solid lightgray;
-	cursor: pointer;
-	width: 200px;
-	display: inline;
+
+.auth-buttons {
+	width: 75%;
+	display: inline-flex;
 	flex-direction: row;
-}
-.signin {
-	margin-right: 5px;
-}
-.signup {
-	margin-left: 5px;
+	justify-content: space-evenly;
+	a {
+		width: 45%;
+		.signin,
+		.signup{
+			background-color: white;
+			color: black;
+			margin: 8px 0;
+			border: 1px solid lightgray;
+			cursor: pointer;
+			width: 100%;
+		}
+	}
 }
 .divider {
 	font-size: 15px;
