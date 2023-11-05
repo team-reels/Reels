@@ -30,7 +30,7 @@ const changepassword = async (password) => { //update
     await reauthenticateWithCredential(auth.currentUser, credential);
     
     await updatePassword(auth.currentUser, newPassword);
-    await doSignOut();
+    await logout();
 }
 
 const resetpassword = async (email) => { //update
