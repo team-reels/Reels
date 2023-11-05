@@ -9,7 +9,9 @@ function Home() {
 
 	useEffect(() => {
 		// paginate 10 per
-		
+		const fetchData = async () => {
+			const { data } = await axios.post("http://localhost:8000/catch_api/get_catches", {uid: "g8Vs7pZe2GgnKqPmEIIv00hxus93"});
+		};
 		// gather catch data , set state
 		const data = [
 			//  species, weight, size, type, likes 
