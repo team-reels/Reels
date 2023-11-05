@@ -24,18 +24,19 @@
     // margin-left: 200px;
     // padding: 20px;
     // margin-top:40px;
-    align-items: center;
+    align-items: left;
     font-size: 30px;
 
 
     .add-label{
         width:fit-content;
-        margin-left: 20px;
+        // margin-left: 20px;
 
     }
     .input{
         // border: 1px black;
         margin: 20px;
-        width: 50%; 
+        width: 100%; 
+        margin-left: 0px
     }
 }
