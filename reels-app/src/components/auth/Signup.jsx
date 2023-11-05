@@ -49,7 +49,7 @@ function SignUp() {
 					/>
 				</label>
 				<button className="login-button" type="submit">
-					Login
+					Sign Up
 				</button>
 			</form>
 		</div>
