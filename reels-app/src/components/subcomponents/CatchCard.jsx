@@ -3,11 +3,10 @@
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 import { FaRegHeart, FaCircleUser, FaRegShareFromSquare } from 'react-icons/fa6';
-import dev_fish from '../../assets/dev_fish.jpg';
 
 function CatchCard(props) {
     //init properties
-    const { species, weight, size, type, likes } = props;
+    const { image, species, weight, size, type, likes } = props;
     const { user } = useContext(AuthContext);
     
     const [loading, setLoading] = useState(true);
@@ -19,7 +18,7 @@ function CatchCard(props) {
 
     return (
         <div className='catch-card'>
-            <img src={dev_fish} alt='Fish'></img>
+            <img src={image} alt='Fish'></img>
             <div className='card-desc'>
                 {/* <div className='card-type'>{type}</div> */}
                 <div className='card-user'>
