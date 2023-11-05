@@ -22,6 +22,7 @@ class Catch(Base):
     size: Mapped[float] = mapped_column(nullable=False)
     type: Mapped[int] = mapped_column(nullable=False)
     likes: Mapped[int] = mapped_column(nullable=False)
+    image_id: Mapped[str] = mapped_column(String(64), nullable=False)
 
     def get_post_time(self):
         return self.post_time
