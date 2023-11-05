@@ -14,7 +14,7 @@ function App() {
         <Link to='/'>
             <h1>Reels</h1> {/* replace with svg? */}
         </Link>
-        <Link to={`/u/${currentUser.uid}`}>
+        <Link to={currentUser ? `/u/${currentUser.uid}` : '/signin'}>
             <FaCircleUser size={30}/>
         </Link>
     </header>

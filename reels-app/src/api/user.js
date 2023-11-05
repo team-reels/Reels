@@ -1,13 +1,16 @@
 import axios from "axios";
 
 export const fun = async () => {
+    console.log('fun')
     try {
-        const { data } = await axios.get('http://api:8000/user_api/get_user/', {
-               params: {
+        console.log('data1')
+        const { data } = await axios.get('http://localhost:8000/user_api/get_user/', {
+                data: [{
                     uid: "g8Vs7pZe2GgnKqPmEIIv00hxus93",
-                }
+                }],
             }
         )
+        console.log('data2')
         console.log(data);
     } catch(e) {
         console.log(e.message);
