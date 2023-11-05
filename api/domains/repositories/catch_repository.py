@@ -26,11 +26,11 @@ class CatchRepository:
                type: int of type of added catch
     Returns: User: User of added user data
     """
-    def add_catch(self, user_id, species, weight, size):
+    def add_catch(self, user_id, species, weight, size, image_id):
         type = randint(1, 5)
         likes = 0
         new_catch = Catch(user_id=user_id, species=species,
-                          weight=weight, size=size, type=type, likes=likes)
+                          weight=weight, size=size, type=type, likes=likes, image_id=image_id)
         return self._add_catch(new_catch)
 
     """
