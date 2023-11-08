@@ -4,7 +4,7 @@ from domains.models.catch import Catch
 from engine import engine
 from sqlalchemy.orm import Session
 from flask_cors import CORS
-from routes.utils import require_json_params
+from routes.utils import require_json_params, require_query_params
 
 catch_blueprint = Blueprint('catches', __name__, url_prefix="/catch_api")
 CORS(catch_blueprint)
@@ -40,11 +40,9 @@ def add_catch():
 
 
 @catch_blueprint.route("/get_catch", methods=["GET"])
-@require_json_params(["cid"])
+@require_query_params(["cid"])
 def get_catch():
-    context = request.get_json()
-
-    cid = context.get("cid")
+    cid = request.args.get("cid")
 
     with Session(engine) as session:
         catch_repository = CatchRepository(session)
@@ -55,38 +53,25 @@ def get_catch():
                 })
 
 
-@catch_blueprint.route("/get_catches", methods=["POST"])
+@catch_blueprint.route("/get_catches", methods=["GET"])
+@require_query_params(["uid"])
 def get_catches():
-    context = request.get_json()
-
-    if context.get("uid") is None:
-        return jsonify({
-                "status": "failure",
-                "reason": "missing uid"
-            })
-
-    user_id = context.get("uid")
+    uid = request.args.get("uid")
 
     with Session(engine) as session:
         catch_repository = CatchRepository(session)
-        catches = catch_repository.get_catches(user_id)
-        catches_id = list(map(lambda x: Catch.to_JSON(x), catches))
+        catches = catch_repository.get_catches(uid)
+        catches = list(map(lambda x: Catch.to_JSON(x), catches))
         return jsonify({
                     "status": "success",
-                    "catches": catches_id,
+                    "catches": catches,
                 })
 
-@catch_blueprint.route("/get_n_catches", methods=["POST"])
+
+@catch_blueprint.route("/get_n_catches", methods=["GET"])
+@require_query_params("n")
 def get_n_catches():
-    context = request.get_json()
-
-    if context.get("n") is None:
-        return jsonify({
-                "status": "failure",
-                "reason": "missing n"
-            })
-
-    n = context.get("n")
+    n = request.args.get("n")
 
     with Session(engine) as session:
         catch_repository = CatchRepository(session)
