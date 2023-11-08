@@ -20,19 +20,19 @@ class CommentRepository:
 
     """
     Description: Adds new Comment object to be persisted
-    Arguments: comment: str of comment of new comment
+    Arguments: Comment: str of comment of new comment, uid: str id of user that commented comment, cid: uuid of catch associated with comment
     Returns: Comment: Comment of added comment data
     """
-    def add_comment(self, comment, user_id, catch_id):
+    def add_comment(self, comment, uid, cid):
         new_comment = Comment(comment=comment,
-                              user_id=user_id, catch_id=catch_id)
+                              uid=uid, cid=cid)
         return self._add_comment(new_comment)
 
     """
     Description: Gets an existing Comment
-    Arguments: id: uuid of Comment
+    Arguments: cid: uuid of Comment
     Returns: Comment: Comment obtained from persisted data
     """
-    def get_comment(self, id):
-        comment = self.session.get(Comment, id)
+    def get_comment(self, cid):
+        comment = self.session.get(Comment, cid)
         return comment

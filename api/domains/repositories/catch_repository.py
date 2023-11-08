@@ -22,29 +22,30 @@ class CatchRepository:
 
     """
     Description: Adds new Catch object to be persisted
-    Arguments: user_id: uuid of uploader's id, species: str of species of added catch,
+    Arguments: uid: uuid of uploader's uid, species: str of species of added catch,
                weight: float of weight of added catch, size: float of weight of added catch,
                type: int of type of added catch
     Returns: User: User of added user data
     """
-    def add_catch(self, user_id, species, weight, size, image_id):
+    def add_catch(self, uid, species, weight, size, iid):
         type = randint(1, 5)
         likes = 0
-        new_catch = Catch(user_id=user_id, species=species,
-                          weight=weight, size=size, type=type, likes=likes, image_id=image_id)
+        new_catch = Catch(uid=uid, species=species,
+                          weight=weight, size=size, type=type, likes=likes,
+                          iid=iid)
         return self._add_catch(new_catch)
 
     """
     Description: Gets an existing Catch
-    Arguments: id: uuid of Catch
+    Arguments: cid: uuid of Catch
     Returns: Catch: Catch obtained from persisted data
     """
-    def get_catch(self, id):
-        catch = self.session.get(Catch, id)
+    def get_catch(self, cid):
+        catch = self.session.get(Catch, cid)
         return catch
     """
     Description: Gets an all catches for a user
-    Arguments: user_id: uuid of user
+    Arguments: uid: uuid of user
     Returns: Catches: List[Catch] catches obtained from persisted data
     """
     def get_catches(self, user_id):
@@ -57,13 +58,13 @@ class CatchRepository:
 
     """
     Description: Adds new Catch object to be persisted
-    Arguments: user_id: uuid of uploader's id, species: str of species of added catch,
+    Arguments: uid: uuid of uploader's id, species: str of species of added catch,
                weight: float of weight of added catch, size: float of weight of added catch,
                type: int of type of added catch
     Returns: User: User of added user data
     """
-    def edit_catch(self, id, species, weight, size):
-        catch = self.session.get(Catch, id)
+    def edit_catch(self, cid, species, weight, size):
+        catch = self.session.get(Catch, cid)
         catch.species = species
         catch.weight = weight
         catch.size = size
