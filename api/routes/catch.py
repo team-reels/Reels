@@ -4,37 +4,17 @@ from domains.models.catch import Catch
 from engine import engine
 from sqlalchemy.orm import Session
 from flask_cors import CORS
+from routes.utils import require_json_params
 
 catch_blueprint = Blueprint('catches', __name__, url_prefix="/catch_api")
 CORS(catch_blueprint)
 
 
+
 @catch_blueprint.route("/add_catch", methods=["POST"])
+@require_json_params(["uid", "species", "weight", "size"])
 def add_catch():
     context = request.get_json()
-
-    if context.get("uid") is None:
-        return jsonify({
-                "status": "failure", "reason": "missing user_id"
-            })
-
-    if context.get("species") is None:
-        return jsonify({
-                "status": "failure",
-                "reason": "missing species"
-            })
-
-    if context.get("weight") is None:
-        return jsonify({
-                "status": "failure",
-                "reason": "missing weight"
-            })
-
-    if context.get("size") is None:
-        return jsonify({
-                "status": "failure",
-                "reason": "missing size"
-            })
 
     uid = context.get("uid")
     species = context.get("species")
