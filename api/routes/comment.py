@@ -20,12 +20,18 @@ def add_comment():
 
     with Session(engine) as session:
         comment_repository = CommentRepository(session)
-        new_comment = comment_repository.add_comment(uid=uid,
-                                                     cid=cid,
-                                                     comment=comment)
+        try:
+            new_comment = comment_repository.add_comment(uid=uid,
+                                                         cid=cid,
+                                                         comment=comment)
+        except IdMissingException as e:
+            return jsonify({
+                        "status": "failure",
+                        "reason": e
+                    })
         return jsonify({
                     "status": "success",
-                    "cid": new_comment.cid
+                    "comment": new_comment.get_JSON()
                 })
 
 
@@ -38,12 +44,12 @@ def get_comment():
         try:
             comment_repository = CommentRepository(session)
             comment = comment_repository.get_comment(cid=cid)
-        except IdExistsException:
+        except IdMissingException:
             return jsonify({
                         "status": "failure",
-                        "reason": f"cid {cid} already exists"
+                        "reason": f"comment with cid {cid} not found"
                     })
     return jsonify({
-        "status": "success",
-        "comment": comment.get_JSON()
-        })
+                "status": "success",
+                "comment": comment.get_JSON()
+            })

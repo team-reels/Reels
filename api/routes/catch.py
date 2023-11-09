@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request
 from domains.repositories.catch_repository import CatchRepository
 from domains.models.catch import Catch
+from domains.repositories.repo_exceptions import IdExistsException, IdMissingException
 from engine import engine
 from sqlalchemy.orm import Session
 from flask_cors import CORS
@@ -19,22 +20,22 @@ def add_catch():
     species = context.get("species")
     weight = context.get("weight")
     size = context.get("size")
-    image_id = context.get("iid")
+    iid = context.get("iid")
 
     with Session(engine) as session:
         catch_repository = CatchRepository(session)
         try:
-            new_catch = catch_repository.add_catch(user_id=uid, species=species,
-                                               weight=weight, size=size,
-                                               image_id=image_id)
+            new_catch = catch_repository.add_catch(uid=uid, species=species,
+                                                   weight=weight, size=size,
+                                                   iid=iid)
             return jsonify({
                         "status": "success",
                         "catch": new_catch.get_JSON()
                     })
-        except:
+        except IdExistsException as e:
             result = jsonify({
                         "status": "failure",
-                        "reason": "unkown backend failure"
+                        "reason": e
                     })
             return result, 400
 
@@ -46,11 +47,17 @@ def get_catch():
 
     with Session(engine) as session:
         catch_repository = CatchRepository(session)
-        catch = catch_repository.get_catch(cid)
-        return jsonify({
-                    "status": "success",
-                    "catch": Catch.to_JSON(catch)
-                })
+        try:
+            catch = catch_repository.get_catch(cid)
+            return jsonify({
+                        "status": "success",
+                        "catch": Catch.to_JSON(catch)
+                    })
+        except IdMissingException as e:
+            return jsonify({
+                        "status": "failure",
+                        "reason": e
+                     })
 
 
 @catch_blueprint.route("/get_catches", methods=["GET"])
@@ -60,12 +67,19 @@ def get_catches():
 
     with Session(engine) as session:
         catch_repository = CatchRepository(session)
-        catches = catch_repository.get_catches(uid)
-        catches = list(map(lambda x: catches.get_JSON(), catches))
-        return jsonify({
-                    "status": "success",
-                    "catches": catches
-                })
+        try:
+            catches = catch_repository.get_catches(uid)
+            catches = list(map(lambda x: x.get_JSON(), catches))
+            return jsonify({
+                        "status": "success",
+                        "catches": catches
+                    })
+        except IdMissingException as e:
+            return jsonify({
+                        "status": "failure",
+                        "reason": e
+                    })
+
 
 
 @catch_blueprint.route("/get_n_catches", methods=["GET"])
@@ -76,7 +90,7 @@ def get_n_catches():
     with Session(engine) as session:
         catch_repository = CatchRepository(session)
         catches = catch_repository.get_n_catches(n)
-        catches = list(map(lambda x: catches.get_JSOn(), catches))
+        catches = list(map(lambda x: x.get_JSON(), catches))
         return jsonify({
                     "status": "success",
                     "catches": catches,
