@@ -10,7 +10,7 @@ comment_blueprint = Blueprint('comments', __name__, url_prefix="/comment_api")
 CORS(comment_blueprint)
 
 
-@comment_blueprint.route("/add_comment", methods=["POST"])
+@comment_blueprint.route("/add_comment", methods=["PUT"])
 @require_json_params(["uid", "cid", "comment"])
 def add_comment():
     context = request.get_json
@@ -35,7 +35,7 @@ def add_comment():
                 })
 
 
-@comment_blueprint.route("/get_comment", methods=["POST"])
+@comment_blueprint.route("/get_comment", methods=["GET"])
 @require_query_params(["cid"])
 def get_comment():
     cid = request.args.get("cid")
