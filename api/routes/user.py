@@ -7,24 +7,16 @@ from sqlalchemy.orm import Session
 from domains.repositories.repo_exceptions import *
 from flask_cors import CORS
 
+from routes.utils import require_json_params, require_query_params
+
 user_blueprint = Blueprint('user_api', __name__, url_prefix="/user_api")
 CORS(user_blueprint)
 
 
-@user_blueprint.route("/add_user", methods=["POST"])
+@user_blueprint.route("/add_user", methods=["PUT"])
+@require_json_params(["username", "uid"])
 def add_user():
     context = request.get_json()
-
-    if context.get("username") is None:
-        return jsonify({
-                "status": "failure",
-                "reason": "missing username"
-            })
-    if context.get("uid") is None:
-        return jsonify({
-                "status": "failure",
-                "reason": "missing uid"
-            })
 
     username = context.get("username")
     uid = context.get("uid")
@@ -32,54 +24,41 @@ def add_user():
     with Session(engine) as session:
         user_repository = UserRepository(session)
         try:
-            new_user = user_repository.add_user(id=uid, username=username)
-        except UsernameExistsException:
+            new_user = user_repository.add_user(uid=uid, username=username)
             return jsonify({
-                "status": "failure",
-                "reason": "username exists"
-            })
-        except IdExistsException:
-            return jsonify({
-                "status": "failure",
-                "reason": "id exists"
-            })
-
-
-        return jsonify({
-            "status": "success",
-            "user id": new_user.id
-            })
+                    "status": "success",
+                    "uid": new_user.uid
+                })
+        except (IdExistsException, UsernameExistsException) as e:
+            result = jsonify({
+                    "status": "failure",
+                    "reason": str(e)
+                })
+            return result, 400
 
 
 @user_blueprint.route("/get_user", methods=["POST"])
+@require_query_params(["uid"])
 def get_user():
     context = request.get_json()
 
-    if context.get("uid") is None:
-        return jsonify({
-                "status": "failure",
-                "reason": "missing uid"
-            })
     uid = context.get("uid")
     with Session(engine) as session:
-        user_repository = UserRepository(session)
-        catches_repository = CatchRepository(session)
-        catches = catches_repository.get_catches(uid)
-        catches = list(map(lambda x: Catch.to_JSON(x), catches))
-        user = user_repository.get_user(uid)
-        response = jsonify({
-                    "status": "success",
-                    "uid": user.id,
-                    "username": user.username,
-                    "bio": user.biography,
-                    "following": 34,
-                    "followers": 21,
-                    "image": "83d4c9ee-0895-4dd4-b1f3-2c0c14290684",
-                    "catches": catches
+        try:
+            user_repository = UserRepository(session)
+            catches_repository = CatchRepository(session)
+            catches = catches_repository.get_catches(uid)
+            catches = list(map(lambda x: Catch.to_JSON(x), catches))
+            user = user_repository.get_user(uid)
+            response = jsonify({
+                        "status": "success",
+                        "user": user.get_JSON(),
+                        "catches": catches
+                    })
+            return response
+        except IdMissingException as e:
+            result = jsonify({
+                    "status": "failure",
+                    "reason": str(e)
                 })
-        return response
-
-@user_blueprint.route("/test", methods=["POST"])
-def test():
-  context = request.get_json()
-  return "Hello, cross-origin-world!"
+            return result, 400

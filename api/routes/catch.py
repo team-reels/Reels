@@ -35,7 +35,7 @@ def add_catch():
         except IdExistsException as e:
             result = jsonify({
                         "status": "failure",
-                        "reason": e
+                        "reason": str(e)
                     })
             return result, 400
 
@@ -56,7 +56,7 @@ def get_catch():
         except IdMissingException as e:
             return jsonify({
                         "status": "failure",
-                        "reason": e
+                        "reason": str(e)
                      })
 
 
@@ -77,7 +77,7 @@ def get_catches():
         except IdMissingException as e:
             return jsonify({
                         "status": "failure",
-                        "reason": e
+                        "reason": str(e)
                     })
 
 

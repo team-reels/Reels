@@ -5,7 +5,7 @@ from sqlalchemy.sql.expression import func
 
 
 class CatchRepository:
-    db_session: Session
+    session: Session
 
     def __init__(self, db_session: Session):
         self.session = db_session

@@ -1,8 +1,8 @@
 from functools import wraps
-from domains.repositories.repo_exceptions import IdExistsException, IdMissingException
-from domains.repositories.catch_repository import Catch
-from domains.repositories.comment_repository import Comment
-from domains.repositories.user_repository import User
+from domains.repositories.repo_exceptions import IdExistsException, IdMissingException, UsernameExistsException
+from domains.models.catch import Catch
+from domains.models.comment import Comment
+from domains.models.user import User
 
 def check_id_not_exists(ids):
     def decorator(func):
@@ -19,6 +19,10 @@ def check_id_not_exists(ids):
                     case "coid":
                         if self.session.get(Comment, kwargs["coid"]) is not None:
                             raise IdExistsException(f"Comment with coid {kwargs['coid']} exists")
+                    case "username":
+                        if self.session.query(User).filter(User.username == kwargs["username"]).first() is not None:
+                            raise UsernameExistsException("User with usrename {kwargs['coid']} exists")
+            return func(self, *args, **kwargs)
         return returned_func
     return decorator
 
@@ -37,5 +41,6 @@ def check_id_exists(ids):
                     case "coid":
                         if self.session.get(Comment, kwargs["coid"]) is None:
                             raise IdMissingException(f"Comment with coid {kwargs['coid']} does not exists")
+            return func(self, *args, **kwargs)
         return returned_func
     return decorator
