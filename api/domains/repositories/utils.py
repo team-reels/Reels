@@ -21,7 +21,7 @@ def check_id_not_exists(ids):
                             raise IdExistsException(f"Comment with coid {kwargs['coid']} exists")
                     case "username":
                         if self.session.query(User).filter(User.username == kwargs["username"]).first() is not None:
-                            raise UsernameExistsException("User with usrename {kwargs['coid']} exists")
+                            raise UsernameExistsException(f"User with username {kwargs['coid']} exists")
             return func(self, *args, **kwargs)
         return returned_func
     return decorator
