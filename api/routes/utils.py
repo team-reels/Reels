@@ -12,7 +12,7 @@ def require_json_params(params):
                     return jsonify({
                         "status": "failure", "reason": f"missing {i}"
                     })
-            return func()
+            return func(*args, **kwargs)
         return returned_func
     return decorator
 
@@ -26,6 +26,6 @@ def require_query_params(query_args):
                     return jsonify({
                         "status": "failure", "reason": f"missing argument {i}"
                     })
-            return func()
+            return func(*args, **kwargs)
         return returned_func
     return decorator
