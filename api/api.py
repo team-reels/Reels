@@ -12,3 +12,4 @@ def init_app():
     app.register_blueprint(catch_blueprint)
     cors = CORS(app)
     return app
+
