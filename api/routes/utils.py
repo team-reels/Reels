@@ -16,13 +16,13 @@ def require_json_params(params):
         return returned_func
     return decorator
 
-def require_query_params(args):
+
+def require_query_params(query_args):
     def decorator(func):
         @wraps(func)
         def returned_func(*args, **kwargs):
-            request_args = request.args
-            for i in args:
-                if request_args.get(i) is None:
+            for i in query_args:
+                if request.args.get(i) is None:
                     return jsonify({
                             "status": "failure", "reason": f"missing argument {i}"
                     })

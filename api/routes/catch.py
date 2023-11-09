@@ -29,12 +29,12 @@ def add_catch():
                                                image_id=image_id)
             return jsonify({
                         "status": "success",
-                        "catch_id": new_catch.id,
+                        "catch": new_catch.get_JSON()
                     })
         except:
             result = jsonify({
                         "status": "failure",
-                        "catch_id": new_catch.id,
+                        "reason": "unkown backend failure"
                     })
             return result, 400
 
@@ -61,10 +61,10 @@ def get_catches():
     with Session(engine) as session:
         catch_repository = CatchRepository(session)
         catches = catch_repository.get_catches(uid)
-        catches = list(map(lambda x: Catch.to_JSON(x), catches))
+        catches = list(map(lambda x: catches.get_JSON(), catches))
         return jsonify({
                     "status": "success",
-                    "catches": catches,
+                    "catches": catches
                 })
 
 
@@ -76,8 +76,8 @@ def get_n_catches():
     with Session(engine) as session:
         catch_repository = CatchRepository(session)
         catches = catch_repository.get_n_catches(n)
-        catches_id = list(map(lambda x: Catch.to_JSON(x), catches))
+        catches = list(map(lambda x: catches.get_JSOn(), catches))
         return jsonify({
                     "status": "success",
-                    "catches": catches_id,
+                    "catches": catches,
                 })
