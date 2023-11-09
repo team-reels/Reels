@@ -35,7 +35,7 @@ class UserRepository:
     Arguments: uid: str id of User
     Returns: User: user obtained from persisted data
     """
-    @check_id_exists("uid")
+    @check_id_exists(["uid"])
     def get_user(self, uid):
         user = self.session.get(User, uid)
         return user
@@ -45,7 +45,7 @@ class UserRepository:
     Arguments: id: uuid of user with biography to be edited
     Returns: User: User with modified biography
     """
-    @check_id_exists("uid")
+    @check_id_exists(["uid"])
     def edit_biography(self, uid, biography):
         user = self.session.get(User, uid)
         user.biography = biography

@@ -3,6 +3,8 @@ from domains.models.catch import Catch
 from random import randint
 from sqlalchemy.sql.expression import func
 
+from domains.repositories.utils import check_id_exists, check_id_not_exists
+
 
 class CatchRepository:
     session: Session
@@ -27,6 +29,7 @@ class CatchRepository:
                type: int of type of added catch
     Returns: User: User of added user data
     """
+    @check_id_exists(["uid"])
     def add_catch(self, uid, species, weight, size, iid):
         type = randint(1, 5)
         likes = 0
@@ -40,6 +43,7 @@ class CatchRepository:
     Arguments: cid: uuid of Catch
     Returns: Catch: Catch obtained from persisted data
     """
+    @check_id_exists(["cid"])
     def get_catch(self, cid):
         catch = self.session.get(Catch, cid)
         return catch
@@ -48,8 +52,9 @@ class CatchRepository:
     Arguments: uid: uuid of user
     Returns: Catches: List[Catch] catches obtained from persisted data
     """
-    def get_catches(self, user_id):
-        catch = self.session.query(Catch).filter(Catch.uid == user_id).all()
+    @check_id_exists(["uid"])
+    def get_catches(self, uid):
+        catch = self.session.query(Catch).filter(Catch.uid == uid).all()
         return catch
 
     def get_n_catches(self, n):
@@ -63,6 +68,7 @@ class CatchRepository:
                type: int of type of added catch
     Returns: User: User of added user data
     """
+    @check_id_exists(["cid"])
     def edit_catch(self, cid, species, weight, size):
         catch = self.session.get(Catch, cid)
         catch.species = species
