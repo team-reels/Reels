@@ -4,3 +4,7 @@ class UsernameExistsException(Exception):
 
 class IdExistsException(Exception):
     pass
+
+
+class IdMissingException(Exception):
+    pass
