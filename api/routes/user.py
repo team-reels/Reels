@@ -47,7 +47,7 @@ def get_user():
             catches_repository = CatchRepository(session)
             catches = catches_repository.get_catches(uid=uid)
             catches = list(map(lambda x: Catch.to_JSON(x), catches))
-            user = user_repository.get_user(uid)
+            user = user_repository.get_user(uid=uid)
             response = jsonify({
                         "status": "success",
                         "user": user.get_JSON(),
