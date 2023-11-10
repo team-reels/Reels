@@ -1,10 +1,11 @@
 from sqlalchemy.orm import Session
 from domains.models.user import User
 from domains.repositories.repo_exceptions import *
+from domains.repositories.utils import check_id_exists, check_id_not_exists
 
 
 class UserRepository:
-    db_session: Session
+    session: Session
 
     def __init__(self, db_session: Session):
         self.session = db_session
@@ -21,22 +22,22 @@ class UserRepository:
 
     """
     Description: Adds new User object to be persisted
-    Arguments: username: str of new user
+    Arguments: uid: str id of new userm, username: str of new user
     Returns: User: User of added user data
     """
-    def add_user(self, id, username):
-        if len(self.session.query(User).filter(User.username == username).all()) > 0:
-            raise UsernameExistsException
-        new_user = User(id=id, username=username)
+    @check_id_not_exists(["uid", "username"])
+    def add_user(self, uid, username):
+        new_user = User(uid=uid, username=username)
         return self._add_user(new_user)
 
     """
     Description: Gets an existing User
-    Arguments: id: uuid of User
+    Arguments: uid: str id of User
     Returns: User: user obtained from persisted data
     """
-    def get_user(self, id):
-        user = self.session.get(User, id)
+    @check_id_exists(["uid"])
+    def get_user(self, uid):
+        user = self.session.get(User, uid)
         return user
 
     """
@@ -44,8 +45,9 @@ class UserRepository:
     Arguments: id: uuid of user with biography to be edited
     Returns: User: User with modified biography
     """
-    def edit_biograpgy(self, id, biography):
-        user = self.session.get(User, id)
-        user.set_biography(biography)
+    @check_id_exists(["uid"])
+    def edit_biography(self, uid, biography):
+        user = self.session.get(User, uid)
+        user.biography = biography
         self.session.commit()
         return user

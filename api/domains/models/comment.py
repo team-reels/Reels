@@ -9,27 +9,30 @@ from sqlalchemy.dialects.postgresql import UUID
 class Comment(Base):
     __tablename__ = "comments"
 
-    id: Mapped[UUID] = mapped_column(UUID(as_uuid=True),
-                                 primary_key=True,
-                                 default=uuid4)
+    coid: Mapped[UUID] = mapped_column(UUID(as_uuid=True),
+                                       primary_key=True,
+                                       default=uuid4)
 
-    catch_id: Mapped[UUID] = mapped_column(ForeignKey("catches.id"),
-                                            nullable=False)
+    cid: Mapped[UUID] = mapped_column(ForeignKey("catches.cid"),
+                                      nullable=False)
 
-    user_id: Mapped[UUID] = mapped_column(ForeignKey("users.id"),
-                                            nullable=False)
+    uid: Mapped[UUID] = mapped_column(ForeignKey("users.uid"),
+                                      nullable=False)
 
     comment: Mapped[str] = mapped_column(String(512),
-                                          nullable=False)
+                                         nullable=False)
 
-    def get_username(self):
-        return self.username
+    def get_JSON(self):
+        return {
+            "coid": self.coid,
+            "cid": self.cid,
+            "comment": self.comment
+            }
 
-    def get_biography(self):
-        return self.biography
-
-    def set_username(self, username):
-        self.username = username
-
-    def set_biography(self, biography):
-        self.biography = biography
+    @staticmethod
+    def to_JSON(comment):
+        return {
+            "coid": comment.coid,
+            "cid": comment.cid,
+            "comment": comment.comment
+            }
